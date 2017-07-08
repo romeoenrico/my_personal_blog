@@ -14,6 +14,18 @@ class AppServiceProvider extends ServiceProvider {
 	public function boot() {
 
 		Schema::defaultStringLength(191);
+
+		view()->composer('frontend.master.layout', function ($view) {
+
+			$view->with('categories', \App\Category::all());
+
+		});
+
+		view()->composer('backend.master.layout', function ($view) {
+
+			$view->with('currentUser', Auth::user());
+
+		});
 	}
 
 	/**
