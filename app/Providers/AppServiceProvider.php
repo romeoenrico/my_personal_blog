@@ -21,11 +21,11 @@ class AppServiceProvider extends ServiceProvider {
 
 		});
 
-		view()->composer('backend.master.layout', function ($view) {
+		//view()->composer('backend.master.layout', function ($view) {
 
-			$view->with('currentUser', Auth::user());
+		//	$view->with('currentUser', Auth::user()->first_name);
 
-		});
+		//});
 	}
 
 	/**

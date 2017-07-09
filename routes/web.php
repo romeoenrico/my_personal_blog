@@ -16,7 +16,14 @@ Route::get('articolo/{slug}', 'FrontendController@getArticolo');
 Route::get('autore/{slug}', 'FrontendController@getAutore');
 Route::get('categoria/{slug}', 'FrontendController@getCategoria');
 
-Route::get('dashboard', 'Backend\MainController@getIndex');
-Route::get('login', 'Backend\MainController@getLogin');
-Route::post('postlogin', 'Backend\MainController@postLogin');
-Route::get('getlogout', 'Backend\MainController@getLogout');
+Route::get('dashboard', 'Backend\SessionsController@getIndex');
+
+//Auth::routes();
+
+Route::get('register', 'Backend\RegistrationController@create');
+Route::post('register', 'Backend\RegistrationController@store');
+Route::get('login', 'Backend\SessionsController@create')->name('home');
+Route::post('login', 'Backend\SessionsController@store');
+Route::get('logout', 'Backend\SessionsController@destroy');
+
+//Route::get('/home', 'HomeController@index')->name('home');

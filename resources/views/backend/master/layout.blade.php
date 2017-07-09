@@ -49,15 +49,21 @@
                     <li><a href="{{ url('backend/users/add') }}">Aggiungi Nuovo</a></li>
                   </ul>
                 </li>
-              </ul>
+                 @if (Auth::check())
 
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ $currentUser->first_name . ' ' . $currentUser->last_name  }} <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ url('backend/logout') }}">Logout</a></li>
-                  </ul>
-                </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">  {{ Auth::user()->first_name }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <form method="POST" action="{{ action('Backend\SessionsController@destroy') }}">
+                      <li><a href="{{ url('logout') }}">Logout</a></li>
+                    </ul>
+                  </li>
+                @else
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Guest <span class="caret"></span></a>
+                    </li>
+                @endif
+
               </ul>
             </div>
           </div>
@@ -74,7 +80,7 @@
 
         <nav class="navbar navbar-default navbar-fixed-bottom panel-footer">
           <div class="col-md-10 col-md-offset-1">
-            <p>A Very Simple Admin Template / Right to Copy - 2015 / Francesco Malatesta</p>
+            <p>A Very Simple Admin Template / Right to Copy - 2017 / Enrico Romeo</p>
           </div>
         </nav>
 
