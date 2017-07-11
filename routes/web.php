@@ -27,3 +27,7 @@ Route::post('login', 'Backend\SessionsController@store');
 Route::get('logout', 'Backend\SessionsController@destroy');
 
 //Route::get('/home', 'HomeController@index')->name('home');
+Route::get('backend/indexuser', 'Backend\UserController@getIndex');
+Route::get('adduser', 'Backend\UserController@getAdd');
+Route::post('postuser', 'Backend\UserController@postAdd');
+Route::get('backend/indexuser/delete/{id}', 'Backend\UserController@getDelete');

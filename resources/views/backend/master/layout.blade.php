@@ -21,7 +21,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="{{ url('backend') }}"><b>Pannello di Controllo</b></a>
+              <a class="navbar-brand" href="{{ url('dashboard') }}"><b>Pannello di Controllo</b></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -45,7 +45,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utenti <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ url('backend/users') }}">Elenco</a></li>
+                    <li><a href="{{ url('backend/indexuser') }}">Elenco</a></li>
                     <li><a href="{{ url('backend/users/add') }}">Aggiungi Nuovo</a></li>
                   </ul>
                 </li>
