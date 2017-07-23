@@ -5,6 +5,8 @@
 @section('breadcrumb') Utenti > Elenco @endsection
 
 @section('content')
+
+@include ('layouts.successmessage')
     <p>Di seguito, l'elenco degli utenti abilitati attualmente.</p>
 
     <table class="table table-striped">
@@ -31,9 +33,19 @@
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Delete</button>
-                    </div>
+                    @if (  Auth::user()->id == $user->id  )
+
+                         <div class="form-group">
+                            <button type="submit" class="btn btn-danger disabled">Delete</button>
+                         </div>
+
+                    @else
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+
+                    @endif
                 </form>
 
             </td>

@@ -24,10 +24,13 @@ Route::get('register', 'Backend\RegistrationController@create');
 Route::post('register', 'Backend\RegistrationController@store');
 Route::get('login', 'Backend\SessionsController@create')->name('home');
 Route::post('login', 'Backend\SessionsController@store');
-Route::get('logout', 'Backend\SessionsController@destroy');
+Route::post('logout', 'Backend\SessionsController@destroy');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('backend/indexuser', 'Backend\UserController@getIndex');
-Route::get('adduser', 'Backend\UserController@getAdd');
-Route::post('postuser', 'Backend\UserController@postAdd');
+Route::get('backend/adduser', 'Backend\UserController@getAdd');
+Route::post('backend/adduser', 'Backend\UserController@store');
+Route::post('backend/adduser', 'Backend\UserController@store');
 Route::get('backend/indexuser/delete/{id}', 'Backend\UserController@getDelete');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

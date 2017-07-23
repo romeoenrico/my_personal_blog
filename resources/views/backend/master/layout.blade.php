@@ -46,24 +46,9 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utenti <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('backend/indexuser') }}">Elenco</a></li>
-                    <li><a href="{{ url('backend/users/add') }}">Aggiungi Nuovo</a></li>
+                    <li><a href="{{ url('backend/adduser') }}">Aggiungi Nuovo</a></li>
                   </ul>
                 </li>
-                 @if (Auth::check())
-
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">  {{ Auth::user()->first_name }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <form method="POST" action="{{ action('Backend\SessionsController@destroy') }}">
-                      <li><a href="{{ url('logout') }}">Logout</a></li>
-                    </ul>
-                  </li>
-                @else
-                    <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Guest <span class="caret"></span></a>
-                    </li>
-                @endif
-
               </ul>
             </div>
           </div>
