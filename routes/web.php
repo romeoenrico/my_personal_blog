@@ -33,4 +33,11 @@ Route::post('backend/adduser', 'Backend\UserController@store');
 Route::post('backend/adduser', 'Backend\UserController@store');
 Route::get('backend/indexuser/delete/{id}', 'Backend\UserController@getDelete');
 
+Route::get('backend/indexcategory', 'Backend\CategoryController@getIndex');
+Route::get('backend/addcategory', 'Backend\CategoryController@getAdd');
+Route::post('backend/addcategory', 'Backend\CategoryController@postAdd');
+Route::get('backend/editcategory', 'Backend\CategoryController@getEdit');
+Route::post('backend/indexcategory/delete/{id}', 'Backend\CategoryController@postEdit');
+Route::get('backend/indexcategory/delete/{id}', 'Backend\CategoryController@getDelete');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

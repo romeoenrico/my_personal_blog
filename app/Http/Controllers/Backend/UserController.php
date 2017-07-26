@@ -31,6 +31,16 @@ class UserController extends Controller {
 			'email' => 'required|email|unique:users',
 			'password' => 'required|confirmed',
 
+		], [
+
+			'first_name.required' => "Specificare il nome.",
+			'last_name.required' => "Specificare il cognome.",
+			'email.required' => "Specificare l'indirizzo email.",
+			'password.required' => "Specificare la password.",
+
+			'email.email' => "Specificare un indirizzo email valido.",
+			'email.unique' => "L'indirizzo inserito esiste già! Prova con un altro.",
+
 		]);
 
 		//Create and Save the Users
