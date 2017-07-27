@@ -58,7 +58,24 @@ class CategoryController extends Controller {
 	}
 
 	public function postEdit($categoryId) {
-		// da implementare...
+		$this->validate(request(), [
+			'name' => 'required',
+			'description' => 'required',
+		], [
+			'name.required' => "Specificare il nome.",
+			'description.required' => "Specificare la descrizione.",
+		]);
+
+		$category = Category::find($categoryId);
+
+		$category->name = request()->input('name');
+		$category->slug = Str::slug($category->name);
+		$category->description = request()->input('description');
+
+		$category->save();
+
+		return redirect('backend/editcategory/' . $categoryId)->with('success_message', 'Categoria modificata correttamente.');
+
 	}
 
 	public function getDelete($categoryId, Request $request) {

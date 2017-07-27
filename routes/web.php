@@ -36,8 +36,15 @@ Route::get('backend/indexuser/delete/{id}', 'Backend\UserController@getDelete');
 Route::get('backend/indexcategory', 'Backend\CategoryController@getIndex');
 Route::get('backend/addcategory', 'Backend\CategoryController@getAdd');
 Route::post('backend/addcategory', 'Backend\CategoryController@postAdd');
-Route::get('backend/editcategory', 'Backend\CategoryController@getEdit');
-Route::post('backend/indexcategory/delete/{id}', 'Backend\CategoryController@postEdit');
+Route::get('backend/editcategory/{id}', 'Backend\CategoryController@getEdit');
+Route::post('backend/editcategory/{id}', 'Backend\CategoryController@postEdit');
 Route::get('backend/indexcategory/delete/{id}', 'Backend\CategoryController@getDelete');
+
+Route::get('backend/indexarticle', 'Backend\ArticleController@getIndex');
+Route::get('backend/addarticle', 'Backend\ArticleController@getAdd');
+Route::post('backend/addarticle', 'Backend\ArticleController@postAdd');
+Route::get('backend/editarticle/{id}', 'Backend\ArticleController@getEdit');
+Route::post('backend/editarticle/{id}', 'Backend\ArticleController@postEdit');
+Route::get('backend/indexarticle/delete/{id}', 'Backend\ArticleController@getDelete');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
