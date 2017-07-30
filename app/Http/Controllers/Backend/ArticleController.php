@@ -31,11 +31,15 @@ class ArticleController extends Controller {
 			'title' => 'required',
 			'body' => 'required',
 			'published_at' => 'required|date_format:d/m/Y H:i',
+			'meta_keys' => 'required',
+			'meta_description' => 'required',
 		], [
 			'title.required' => 'Specificare il titolo!',
 			'body.required' => 'Un articolo non può essere vuoto!',
 			'published_at.required' => 'Specificare la data di pubblicazione!',
 			'published_at.date_format' => 'Specificare una data nel formato gg/mm/aaaa oo:mm',
+			'meta_keys.required' => 'Specificare una o più Meta Key',
+			'meta_description.required' => 'Specificare una o più Meta Description',
 		]);
 
 		$article = new Article;

@@ -8,7 +8,8 @@
         </h2>
         <div class="post-meta">
 
-            <span>by
+            <span>
+                <i class="fa fa-user"></i>by
                 <a href="{{ url('autore/' . $article->user->slug)  }}">
                     {{ $article->user->first_name . ' ' . $article->user->last_name }}
                 </a>
@@ -27,8 +28,7 @@
             {!! \Illuminate\Support\Str::words($article->body, 150,'....')  !!}
 
             <div class="read-more">
-                <a href="#">Continue Reading <p><small><span class="eta"></span> (<span class="words"></span> words)</small></p>
-                </a>
+                <a href="{{ url('articolo/' . $article->slug)  }}">Continue Reading </a>
             </div>
         @else
 
@@ -38,3 +38,5 @@
     </div>
 
 </article>
+
+
