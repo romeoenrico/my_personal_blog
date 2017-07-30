@@ -6,7 +6,7 @@
 
 @section('content')
 
-@include('layouts.successmessage')
+@include ('layouts.successmessage')
 
     <p>Usa il form di seguito per aggiungere una nuova categoria.</p>
 

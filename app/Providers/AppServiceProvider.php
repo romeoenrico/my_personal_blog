@@ -18,6 +18,8 @@ class AppServiceProvider extends ServiceProvider {
 		view()->composer('frontend.master.layout', function ($view) {
 
 			$view->with('categories', \App\Category::all());
+			$view->with('articles', \App\Article::orderBy('id', 'desc')->take(5)->get());
+			$view->with('archives', \App\Article::archives());
 
 		});
 
