@@ -2,7 +2,7 @@
 
 @section('title') Pannello di Controllo @endsection
 
-@section('breadcrumb') Pannello di Controllo @endsection
+@section('breadcrumb') Pannello di Controllo -> Dashboard @endsection
 
 @section('content')
     <p>Benvenuto {{ Auth::user()->first_name }} ! Scegli cosa vuoi fare usando il menu qui in alto.</p>
@@ -22,5 +22,14 @@
 	            <button type="submit" class="btn btn-danger">Log Out</button>
 	        </div>
     </form>
+
+
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+        <span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="{{ url('dashboard/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a><li>
+          </ul>
+    </div>
 
 @endsection

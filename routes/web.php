@@ -18,6 +18,8 @@ Route::get('categoria/{slug}', 'FrontendController@getCategoria');
 
 Route::get('dashboard', 'Backend\SessionsController@getIndex');
 
+Route::get('dashboard/profile', 'Backend\SessionsController@profile')->name('profile');
+Route::post('dashboard/profile', 'Backend\SessionsController@update_avatar');
 //Auth::routes();
 
 Route::get('register', 'Backend\RegistrationController@create');
