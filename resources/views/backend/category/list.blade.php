@@ -5,6 +5,9 @@
 @section('breadcrumb') Categorie > Elenco @endsection
 
 @section('content')
+
+@include ('layouts.successmessage')
+
     <p>Di seguito, l'elenco delle categorie presenti attualmente.</p>
 
     <table class="table table-striped">

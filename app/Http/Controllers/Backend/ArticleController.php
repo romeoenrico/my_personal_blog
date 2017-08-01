@@ -31,15 +31,15 @@ class ArticleController extends Controller {
 			'title' => 'required',
 			'body' => 'required',
 			'published_at' => 'required|date_format:d/m/Y H:i',
-			'meta_keys' => 'required',
-			'meta_description' => 'required',
+			'metadescription' => 'required',
+			'metakeys' => 'required',
+
 		], [
 			'title.required' => 'Specificare il titolo!',
 			'body.required' => 'Un articolo non può essere vuoto!',
 			'published_at.required' => 'Specificare la data di pubblicazione!',
 			'published_at.date_format' => 'Specificare una data nel formato gg/mm/aaaa oo:mm',
-			'meta_keys.required' => 'Specificare una o più Meta Key',
-			'meta_description.required' => 'Specificare una o più Meta Description',
+
 		]);
 
 		$article = new Article;
@@ -60,7 +60,8 @@ class ArticleController extends Controller {
 
 		$article->categories()->sync($request->get('categories'));
 
-		return redirect('backend/indexarticle')->with('success_message', 'Articolo aggiunto correttamente.');
+		$request->session()->flash('success_message', 'Article was successful added!');
+		return redirect('backend/indexarticle');
 	}
 
 	public function getEdit($articleId) {

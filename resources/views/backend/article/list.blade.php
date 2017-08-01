@@ -5,6 +5,9 @@
 @section('breadcrumb') Articoli > Elenco @endsection
 
 @section('content')
+
+@include ('layouts.successmessage')
+
     <p>Di seguito, l'elenco degli articoli presenti attualmente.</p>
 
     <div class="text-center">

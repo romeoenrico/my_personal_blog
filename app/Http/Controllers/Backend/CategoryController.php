@@ -47,7 +47,8 @@ class CategoryController extends Controller {
 		]);
 
 		//dd(request()->session());
-		request()->session()->flash('success_message', 'Categoria aggiunta correttamente !');
+		//request()->session()->flash('success_message', 'Categoria aggiunta correttamente !');
+		$request->session()->flash('success_message', 'Category was successful added!');
 		return redirect('backend/indexcategory');
 
 	}
