@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Article;
+use App\Category;
+use App\Observers\DetachCategoriesBeforeArticleDelete;
+use App\Observers\DetachArticlesWhenDeletingCategory;
 
 class AppServiceProvider extends ServiceProvider {
 	/**
@@ -12,6 +16,9 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot() {
+
+		Article::observe(DetachCategoriesBeforeArticleDelete::class);
+		Category::observe(DetachArticlesWhenDeletingCategory::class);
 
 		Schema::defaultStringLength(191);
 

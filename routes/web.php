@@ -12,7 +12,7 @@
  */
 
 Route::get('/', 'FrontendController@getIndex');
-Route::get('articolo/{slug}', 'FrontendController@getArticolo');
+Route::get('articolo/{slug}', 'FrontendController@getArticolo')->name('article');
 Route::get('autore/{slug}', 'FrontendController@getAutore');
 Route::get('categoria/{slug}', 'FrontendController@getCategoria');
 
@@ -32,7 +32,6 @@ Route::post('logout', 'Backend\SessionsController@destroy');
 Route::get('backend/indexuser', 'Backend\UserController@getIndex');
 Route::get('backend/adduser', 'Backend\UserController@getAdd');
 Route::post('backend/adduser', 'Backend\UserController@store');
-Route::post('backend/adduser', 'Backend\UserController@store');
 Route::get('backend/indexuser/delete/{id}', 'Backend\UserController@getDelete');
 
 Route::get('backend/indexcategory', 'Backend\CategoryController@getIndex');
@@ -46,6 +45,7 @@ Route::get('backend/indexarticle', 'Backend\ArticleController@getIndex');
 Route::get('backend/addarticle', 'Backend\ArticleController@getAdd');
 Route::post('backend/addarticle', 'Backend\ArticleController@postAdd');
 Route::get('backend/editarticle/{id}', 'Backend\ArticleController@getEdit');
+
 Route::post('backend/editarticle/{id}', 'Backend\ArticleController@postEdit');
 Route::get('backend/indexarticle/delete/{id}', 'Backend\ArticleController@getDelete');
 

@@ -5,8 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="description" content="il blog di Enrico Romeo">
+        <meta name="author" content="Enrico Romeo">
         <link rel="icon" href="favicon.ico">
         <title>@yield('title') - Il Blog di Enrico</title>
         <!-- Bootstrap core CSS -->
@@ -15,9 +15,13 @@
         <!-- Custom styles for this template -->
         <link href="{{ asset('css/jquery.bxslider.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 
     </head>
     <body>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -58,7 +62,8 @@
 
             <div class="site-heading">
                 <h1 class="site-title" style="font-size: 4em; padding-top: 0.1em;">
-                    <span style="color:#e74430;">#</span>enricoromeo < <a href="/" title="My Now Page"> now </a> >
+                    <span style="color:#e74430;">#</span>enricoromeo
+                    <h4>Web Developer</h4>
                 </h1>
                 <hr class="small">
             </div>
@@ -94,7 +99,7 @@
                                         <a href="post.html"><img src="images/90x60-1.jpg" alt=""></a>
                                     </div>
                                     <div class="post-body">
-                                        <h2><a href="post.html">{{ $featuredpost->title }}</a></h2>
+                                        <h2><a href="{{ url('articolo/' . $featuredpost->slug) }}">{{ $featuredpost->title }}</a></h2>
                                         <div class="post-meta">
                                             <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
                                         </div>
@@ -125,35 +130,27 @@
                         <h3 class="sidebar-title">Categories</h3>
                         <div class="widget-container">
                             @foreach($categories as $category)
-
                                 <ul>
                                     <li>
                                         <a href="{{ url('categoria/' . $category->slug) }}">{{ $category->name }}</a>
                                     </li>
                                 </ul>
-
                             @endforeach
                         </div>
                     </div>
-                                       <!-- sidebar-widget -->
+                    <!-- sidebar-widget -->
                     <div class="sidebar-widget">
                         <h3 class="sidebar-title">Archives</h3>
                         <div class="widget-container">
-
                             @foreach ($archives as $stats)
-
                                 <ul>
                                     <li>
                                         <a href="{{\Request::url()}}?month={{ $stats['month'] }}&year={{ $stats['year'] }} ">
-
                                           {{ $stats['month'] . ' ' . $stats['year'] . ' ' . '( ' . $stats['published'] . ' posts )' }}
-
                                         </a>
                                     </li>
                                 </ul>
-
                             @endforeach
-
                         </div>
                     </div>
                     </aside>
@@ -174,8 +171,7 @@
             </div>
 
             <div class="footer-bottom">
-                <i class="fa fa-copyright"></i> Copyright 2015. All rights reserved.<br>
-                Theme made by <a href="http://www.moozthemes.com">MOOZ Themes</a>
+                <i class="fa fa-copyright"></i> Copyright 2018. All rights reserved.<br>
             </div>
         </footer>
 

@@ -25,6 +25,7 @@
 
         @if(str_word_count($article->body) > 150)
 
+
             {!! \Illuminate\Support\Str::words($article->body, 150,'....')  !!}
 
             <div class="read-more">
@@ -32,11 +33,9 @@
             </div>
         @else
 
-            {!! $article->body !!}
+          {!! $article->body !!}
 
         @endif
     </div>
 
 </article>
-
-

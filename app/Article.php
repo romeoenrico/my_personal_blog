@@ -6,6 +6,21 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model {
+
+
+	public static function createFromData($title, $body, $is_published,
+	$meta_description, $meta_keys) {
+         $article = new self();
+         $article->title = $title;
+         $article->body = $body;
+				 $article->is_published = $is_published;
+         $article->meta_description = $meta_description;
+				 $article->meta_keys = $meta_keys;
+         $article->published_at = null;
+         return $article;
+  }
+
+
 	public function user() {
 
 		return $this->belongsTo('App\User');

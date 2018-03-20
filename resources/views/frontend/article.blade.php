@@ -17,7 +17,7 @@
 	            <span>
 	            	<i class="fa fa-user"></i>by
 	                <a href="{{ url('autore/' . $article->user->slug)  }}">
-	                    {{ $article->user->first_name . ' ' . $article->user->last_name }}
+	                   {{ $article->user->first_name . ' ' . $article->user->last_name }}
 	                </a>
 	            </span>/
 	            <span>
@@ -64,4 +64,3 @@
 		</script>
 
 @endsection
-
