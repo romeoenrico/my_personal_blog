@@ -6,6 +6,7 @@ use App\Article;
 use App\Category;
 use App\Commands\SaveArticleCommand;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleSaveRequest;
 use App\Exceptions\NotSavedException;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ArticleRepository;
@@ -24,7 +25,7 @@ class ArticleController extends Controller {
 	}
 	/**
 	 * Mosta gli articoli a sistema paginati per il numero intero
-	 *  
+	 *
 	 */
 	public function getIndex(ArticleRepository $articleRepository) {
 		$articles = $articleRepository->getAll(10);
@@ -37,28 +38,21 @@ class ArticleController extends Controller {
 		return view('backend.article.add', compact('categories'));
 	}
 
-	public function postAdd(Request $request, CategoryRepository $categoryRepository) {
-		$this->validate($request, [
-			'title' => 'required',
-			'body' => 'required',
-			'published_at' => 'required|date_format:d/m/Y H:i',
-			'metadescription' => 'required',
-			'metakeys' => 'required',
-
-		], [
-			'title.required' => 'Specificare il titolo!',
-			'body.required' => 'Un articolo non può essere vuoto!',
-			'published_at.required' => 'Specificare la data di pubblicazione!',
-			'published_at.date_format' => 'Specificare una data nel formato gg/mm/aaaa oo:mm',
-
-		]);
+	/**
+	 * Salva un nuovo articolo, i cui dati sono contenuti in $request.
+	 *
+	 * @param ArticleSaveRequest $requests
+	 * @param CategoryRepository $categoryRepository
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function postAdd(ArticleSaveRequest $request, CategoryRepository $categoryRepository) {
 
 		$article = Article::createFromData(
-			$request->get('title'),
-			$request->get('body'),
-			$request->get('is_published'),
-			$request->get('metadescription'),
-			$request->get('metakeys')
+			 $request->get('title'),
+			 $request->get('body'),
+			 $request->get('is_published'),
+			 $request->get('metadescription'),
+			 $request->get('metakeys')
 	  );
 
 		$article->slug = 	Str::slug($article->title);
