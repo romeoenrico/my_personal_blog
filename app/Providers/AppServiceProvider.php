@@ -8,6 +8,7 @@ use App\Article;
 use App\Category;
 use App\Observers\DetachCategoriesBeforeArticleDelete;
 use App\Observers\DetachArticlesWhenDeletingCategory;
+use App\Observers\DeletePostImageFileWhenDeletingArticle;
 
 class AppServiceProvider extends ServiceProvider {
 	/**
@@ -18,6 +19,7 @@ class AppServiceProvider extends ServiceProvider {
 	public function boot() {
 
 		Article::observe(DetachCategoriesBeforeArticleDelete::class);
+		Article::observe(DeletePostImageFileWhenDeletingArticle::class);
 		Category::observe(DetachArticlesWhenDeletingCategory::class);
 
 		Schema::defaultStringLength(191);

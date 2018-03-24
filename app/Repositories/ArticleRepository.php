@@ -8,10 +8,21 @@ use App\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use App\Exceptions\NotSavedException;
+use App\Exceptions\NonFoundException;
+use App\Exceptions\NotDeletedException;
 
 
 class ArticleRepository
 {
+
+
+  public function findById($id) {
+    $result = Article::with(['user', 'categories'])->find($id);
+    if (!$result) {
+        throw new NotFoundException();
+    }
+      return $result;
+    }
     /**
      * Restituisce, paginati, gli articoli presenti sul database. Se $onlyPublished è true, solo quelli
      * mandati in pubblicazione. Se $onlyVisible è true, solo quelli già pubblicati e già visibili.

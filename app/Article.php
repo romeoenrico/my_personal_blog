@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model {
 
-
 	public static function createFromData($title, $body, $is_published,
 	$meta_description, $meta_keys) {
+
          $article = new self();
          $article->title = $title;
          $article->body = $body;
@@ -18,7 +18,26 @@ class Article extends Model {
 				 $article->meta_keys = $meta_keys;
          $article->published_at = null;
          return $article;
+
   }
+
+	public function isPublished() {
+
+		return !is_null($this->published_at);
+
+	}
+
+	public function publish($publicationDate)	{
+
+		$this->published_at = $publicationDate;
+
+	}
+
+public function unpublish()	{
+
+		$this->published_at = null;
+
+}
 
 
 	public function user() {

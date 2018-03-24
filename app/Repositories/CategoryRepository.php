@@ -14,10 +14,14 @@ class CategoryRepository
      * @param array $ids
      * @return mixed
      */
-    public function getByIds(array $ids)
-    {
+    public function getByIds(array $ids) {
         return Category::findMany($ids);
     }
+
+    public function getAll() {
+      return Category::all();
+    }
+
 
 
 }

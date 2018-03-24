@@ -8,6 +8,8 @@ use App\Commands\SaveArticleCommand;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleSaveRequest;
 use App\Exceptions\NotSavedException;
+use App\Exceptions\NotFoundException;
+use App\Exceptions\NonDeletedException;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ArticleRepository;
 use Illuminate\Http\Request;
@@ -32,8 +34,9 @@ class ArticleController extends Controller {
 		return view('backend.article.list', compact('articles'));
 	}
 
-	public function getAdd() {
-		$categories = Category::all();
+	public function getAdd(CategoryRepository $categoryRepository) {
+
+		$categories = $categoryRepository->getAll();
 
 		return view('backend.article.add', compact('categories'));
 	}
@@ -74,34 +77,33 @@ class ArticleController extends Controller {
 							->with('error_message', 'Problemi in fase di aggiunta. Riprovare.');
 			}
 
-		$request->session()->flash('success_message', 'Article was successful added!');
+		$request->session()->flash('success_message', 'Article è stato aggiunto correttamente!');
 		return redirect('backend/indexarticle');
 	}
 
-	public function getEdit($articleId) {
-		$categories = Category::all();
+	public function getEdit(
+			$articleId,
+			CategoryRepository $categoryRepository,
+			ArticleRepository $articleRepository
+		)
+	{
+		$categories = $categoryRepository->getAll();
 
-		$article = Article::find($articleId);
+		$article = $this->findArticleById($articleId, $articleRepository);
 
 		return view('backend.article.edit', compact('article', 'categories'));
 	}
 
-	public function postEdit(Request $request, $articleId) {
-		$this->validate($request, [
-			'title' => 'required',
-			'body' => 'required',
-			'published_at' => 'required|date_format:d/m/Y H:i',
-		], [
-			'title.required' => 'Specificare il titolo!',
-			'body.required' => 'Un articolo non può essere vuoto!',
-			'published_at.required' => 'Specificare la data di pubblicazione!',
-			'published_at.date_format' => 'Specificare una data nel formato gg/mm/aaaa oo:mm',
-		]);
+	public function postEdit(
+			ArticleSaveRequest $request,
+			CategoryRepository $categoryRepository,
+			ArticleRepository $articleRepository,
+			$articleId) {
 
-		$article = Article::find($articleId);
+		$article = $this->findArticleById($articleId, $articleRepository);
 
 		$article->title = $request->get('title');
-		$article->slug = Str::slug($article->title);
+		//$article->slug = Str::slug($article->title);
 		$article->body = $request->get('body');
 		$article->is_published = $request->get('is_published');
 		$date = \DateTime::createFromFormat('d/m/Y H:i', $request->get('published_at'));
@@ -111,27 +113,59 @@ class ArticleController extends Controller {
 
 		$this->update_postImage($request, $article);
 
-		$article->save();
+		//$article->categories()->sync($request->get('categories'));
+		$categories = $categoryRepository->getByIds($request->get('categories'));
 
-		$article->categories()->sync($request->get('categories'));
+		try {
+					$this->dispatch(new SaveArticleCommand(
+							$article,
+							$article->user,
+							$categories
+					));
 
-		return redirect('backend/editarticle/' . $articleId)->with('success_message', 'Articolo modificato correttamente.');
+			} catch (NotSavedException $e) {
+					return redirect('backend/editarticle')
+							->withInput()
+							->with('error_message', 'Problemi in fase di modifica. Riprovare.');
+			}
+
+			$request->session()->flash('success_message', 'Articolo correttamente modificato!');
+			return redirect('backend/indexarticle');
 	}
 
-	public function getDelete($articleId) {
-		Article::find($articleId)->delete();
+	public function getDelete(ArticleRepository $articleRepository, $articleId) {
+
+		$article = $this->findArticleById($articleId, $articleRepository);
+
+		try {
+				$articleRepository->delete($article);
+		} catch (NotDeletedException $e) {
+				return redirect('backend/indexarticle')->with('error_message', 'Impossibile cancellare l\'articolo selezionato.');
+		}
 		return redirect('backend/indexarticle')->with('success_message', 'Articolo cancellato correttamente.');
 	}
 
-	private function update_postImage(Request $request, Article $article) {
-		dd($request);
+	private function update_postImage(
+			Request $request,
+			Article $article) {
+
 		if ($request->hasFile('postimage')) {
 			$postimage = $request->file('postimage');
-			$filename = time() . '.' . $postimage->getClientOriginalExtension();
-			Image::make($postimage)->resize(500, 200)->save(public_path('/uploads/postimage' . "/" . $filename));
+			$filename = time() .  '_' . $article->id . '_' . $article->title . '.' . $postimage->getClientOriginalExtension();
+			Image::make($postimage)->resize(500, 200)->save(public_path('/uploads/images' . "/" . $filename));
 			$article->post_image = $filename;
+			return $article;
 		}
 
+	}
+
+	private function findArticleById($articleId, $articleRepository){
+		try {
+				$article = $articleRepository->findById($articleId);
+		} catch (NotFoundException $e) {
+				return redirect('backend/indexarticle')->with('error_message', 'L\'articolo scelto non esiste o non è disponibile.');
+		}
+			return $article;
 	}
 
 
