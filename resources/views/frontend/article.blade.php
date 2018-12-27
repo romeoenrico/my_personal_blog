@@ -39,6 +39,11 @@
 
 	        {!! $article->body !!}
 
+					@if ($article->tags)
+						@foreach ($article->tags as $tag)
+							<button type="button" class="btn btn-primary">{{$tag->name}} <span class="badge">{{$tag->count}}</span></button>
+						@endforeach
+					@endif
 
 	    </div>
 

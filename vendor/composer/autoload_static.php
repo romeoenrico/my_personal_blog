@@ -103,6 +103,7 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         'C' => 
         array (
             'Cron\\' => 5,
+            'Conner\\Tagging\\' => 15,
             'Carbon\\' => 7,
         ),
         'A' => 
@@ -266,6 +267,10 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+        'Conner\\Tagging\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rtconner/laravel-tagging/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -360,6 +365,19 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
+        'Conner\\Tagging\\Console\\Commands\\GenerateTagGroup' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Console/Commands/GenerateTagGroup.php',
+        'Conner\\Tagging\\Contracts\\TaggableContract' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Contracts/TaggableContract.php',
+        'Conner\\Tagging\\Contracts\\TaggingUtility' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Contracts/TaggingUtility.php',
+        'Conner\\Tagging\\Events\\TagAdded' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Events/TagAdded.php',
+        'Conner\\Tagging\\Events\\TagRemoved' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Events/TagRemoved.php',
+        'Conner\\Tagging\\Model\\Tag' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Model/Tag.php',
+        'Conner\\Tagging\\Model\\TagGroup' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Model/TagGroup.php',
+        'Conner\\Tagging\\Model\\Tagged' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Model/Tagged.php',
+        'Conner\\Tagging\\Providers\\LumenTaggingServiceProvider' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Providers/LumenTaggingServiceProvider.php',
+        'Conner\\Tagging\\Providers\\TaggingServiceProvider' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Providers/TaggingServiceProvider.php',
+        'Conner\\Tagging\\Taggable' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Taggable.php',
+        'Conner\\Tagging\\Util' => __DIR__ . '/..' . '/rtconner/laravel-tagging/src/Util.php',
+        'CreateImageGalleryTable' => __DIR__ . '/../..' . '/database/migrations/2018_03_24_172440_create_image_gallery_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/DayOfMonthField.php',
@@ -1643,7 +1661,6 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
-        'ImageGallery' => __DIR__ . '/../..' . '/database/migrations/2018_03_24_172440_image_gallery.php',
         'Intervention\\Image\\AbstractColor' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractColor.php',
         'Intervention\\Image\\AbstractDecoder' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractDecoder.php',
         'Intervention\\Image\\AbstractDriver' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractDriver.php',

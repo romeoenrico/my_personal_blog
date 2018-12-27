@@ -14,10 +14,8 @@
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Custom styles for this template -->
         <link href="{{ asset('css/jquery.bxslider.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-        <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-
     </head>
     <body>
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
