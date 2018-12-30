@@ -41,6 +41,15 @@
             </select>
         </p>
 
+        <p>
+            <label for="tags">Tags:</label>
+            <select class="form-control" name="tags[]" id="tags" multiple>
+                @foreach($tags as $tag)
+                    <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                @endforeach
+            </select>
+        </p>
+
         <hr/>
 
         <div class="row">

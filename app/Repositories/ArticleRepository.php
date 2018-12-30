@@ -16,12 +16,13 @@ class ArticleRepository
 {
 
 
-  public function findById($id) {
-    $result = Article::with(['user', 'categories'])->find($id);
-    if (!$result) {
-        throw new NotFoundException();
+    public function findById($id)
+    {
+      $result = Article::with(['user', 'categories'])->find($id);
+      if (!$result) {
+          throw new NotFoundException();
     }
-      return $result;
+        return $result;
     }
     /**
      * Restituisce, paginati, gli articoli presenti sul database. Se $onlyPublished è true, solo quelli
@@ -30,11 +31,18 @@ class ArticleRepository
      */
 
     public function getAll(Int $numberPerPage)
-     {
+    {
          $query = Article::with('user', 'categories')->orderBy('published_at', 'DESC')
                   ->paginate($numberPerPage);
          return $query;
-     }
+    }
+
+    public function getArticlesByTags(Array $tags, Int $numberPerPage)
+    {
+   		 $query = Article::withAnyTag($tags)->orderBy('published_at', 'DESC')
+                ->paginate($numberPerPage);
+       return $query;
+   	}
 
     public function save(Article $article)
     {

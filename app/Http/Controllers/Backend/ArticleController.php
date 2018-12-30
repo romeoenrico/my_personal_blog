@@ -37,8 +37,8 @@ class ArticleController extends Controller {
 	public function getAdd(CategoryRepository $categoryRepository) {
 
 		$categories = $categoryRepository->getAll();
-
-		return view('backend.article.add', compact('categories'));
+		$tags = Article::existingTags();
+		return view('backend.article.add', compact('categories', 'tags'));
 	}
 
 	/**
@@ -76,6 +76,8 @@ class ArticleController extends Controller {
 							->withInput()
 							->with('error_message', 'Problemi in fase di aggiunta. Riprovare.');
 			}
+
+    $tags = $article->tag($request->get('tags'));
 
 		$request->session()->flash('success_message', 'Article è stato aggiunto correttamente!');
 		return redirect('backend/indexarticle');
@@ -136,7 +138,6 @@ class ArticleController extends Controller {
 	public function getDelete(ArticleRepository $articleRepository, $articleId) {
 
 		$article = $this->findArticleById($articleId, $articleRepository);
-
 		try {
 				$articleRepository->delete($article);
 		} catch (NotDeletedException $e) {

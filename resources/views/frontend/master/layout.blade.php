@@ -200,6 +200,6 @@
             });
 
         </script>
-
+     <script id="dsq-count-scr" src="//enricoromeo.disqus.com/count.js" async></script>
     </body>
 </html>

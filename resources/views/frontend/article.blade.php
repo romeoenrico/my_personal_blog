@@ -10,7 +10,7 @@
 	    </div>
 	    <div class="blog-post-body">
 	        <h2 class="post-title">
-	            <a href="{{ url('articolo/' . $article->slug)  }}">{{ $article->title  }}</a>
+	            <a href="{{ url('articolo/' . $article->slug) }}">{{ $article->title  }}</a>
 	        </h2>
 	        <div class="post-meta">
 
@@ -25,7 +25,7 @@
 	            </span>/
 	            <span>
 	            	<i class="fa fa-comment-o"></i>
-	            	<a href="#">343</a>
+	            	<a href="{{ url('articolo/' . $article->slug) }}#disqus_thread">343</a>
 	            </span>/
 	            <span>
 	            	<i class="fa fa-book"></i>
@@ -39,11 +39,21 @@
 
 	        {!! $article->body !!}
 
-					@if ($article->tags)
-						@foreach ($article->tags as $tag)
-							<button type="button" class="btn btn-primary">{{$tag->name}} <span class="badge">{{$tag->count}}</span></button>
-						@endforeach
+					@if (count($article->tags) >= 1)
+					<div class="post-meta">
+						<i class="fa fa-tag"></i>Tag
+						<span>
+							@foreach ($article->tags as $tag)
+								<span><a href="{{ url('tag/' . $tag->name)  }}">{{$tag->count . " " . $tag->name }}</span> </a>
+								@if(!$loop->last)
+									/
+								@endif
+							@endforeach
+						</span>
+					</div>
 					@endif
+
+					<div id="disqus_thread"></div>
 
 	    </div>
 
@@ -67,5 +77,25 @@
 			});
 
 		</script>
+
+		<script>
+
+			/**
+			*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+			*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+			var disqus_config = function () {
+			this.page.url ='{{ url('articolo/' . $article->slug) }}';  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = '{{ $article->slug }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+			};
+
+			(function() { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://enricoromeo.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 @endsection
