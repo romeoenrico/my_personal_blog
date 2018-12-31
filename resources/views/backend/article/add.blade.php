@@ -34,7 +34,7 @@
 
         <p>
             <label for="categories">Categorie:</label>
-            <select class="form-control" name="categories[]" id="categories" multiple>
+            <select class="form-control" name="categories[]" id="categories" multiple >
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
@@ -42,12 +42,16 @@
         </p>
 
         <p>
-            <label for="tags">Tags:</label>
-            <select class="form-control" name="tags[]" id="tags" multiple>
-                @foreach($tags as $tag)
-                    <option value="{{ $tag->name }}">{{ $tag->name }}</option>
-                @endforeach
-            </select>
+          <label for="tags"> Tags: </label>
+              <select class="form-control" name="tags[]" id="tags" multiple>
+                    @foreach($tags as $tag)
+                        <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                    @endforeach
+              </select>
+          <br>
+          <br>
+          <input id="new-tag" type="text" />
+          <button type="button" id="btn-add-tag">Aggiungi Tag</button>
         </p>
 
         <hr/>
@@ -107,9 +111,27 @@
             toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
         });
 
-        $(document).ready(function(){
+        $(document).ready(function() {
             $("#categories").select2();
+            $("#tags").select2({
+              tags: true
+            });
+
+            $("#btn-add-tag").on("click", function(){
+              var newTagVal = $("#new-tag").val();
+              // Set the value, creating a new option if necessary
+              if ($("#tags").find("option[value='" + newTagVal + "']").length) {
+                $("#tags").val(newTagVal).trigger("change");
+              } else {
+                // Create the DOM option that is pre-selected by default
+                var newTag = new Option(newTagVal, newTagVal, true, true);
+                // Append it to the select
+                $("#tags").append(newTag).trigger('change');
+              }
+            });
         });
+
+
     </script>
 
 @endsection

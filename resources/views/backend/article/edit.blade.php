@@ -46,9 +46,22 @@
             <label for="categories">Categorie:</label>
             <select class="form-control" name="categories[]" id="categories" multiple>
                 @foreach($categories as $category)
-                    <option id="category{{ $category->id }}" value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option id="category{{ $category->id }}" value="{{ $category->id }}" selected>{{ $category->name }}</option>
                 @endforeach
             </select>
+        </p>
+
+        <p>
+          <label for="tags"> Tags: </label>
+              <select class="form-control" name="tags[]" id="tags" multiple>
+                    @foreach($tags as $tag)
+                        <option id="tag"{{ $tag->name}} value="{{ $tag->name }}" selected>{{ $tag->name }}</option>
+                    @endforeach
+              </select>
+          <br>
+          <br>
+          <input id="new-tag" type="text" />
+          <button type="button" id="btn-add-tag">Aggiungi Tag</button>
         </p>
 
         <hr/>
@@ -114,6 +127,25 @@
 
             $('#is_published').val('{{ $article->is_published }}');
             $("#categories").val({{ $article->categories->pluck('id') }}).trigger('change');
+        });
+
+        $(document).ready(function() {
+            $("#tags").select2({
+              tags: true
+            });
+
+            $("#btn-add-tag").on("click", function(){
+              var newTagVal = $("#new-tag").val();
+              // Set the value, creating a new option if necessary
+              if ($("#tags").find("option[value='" + newTagVal + "']").length) {
+                $("#tags").val(newTagVal).trigger("change");
+              } else {
+                // Create the DOM option that is pre-selected by default
+                var newTag = new Option(newTagVal, newTagVal, true, true);
+                // Append it to the select
+                $("#tags").append(newTag).trigger('change');
+              }
+            });
         });
     </script>
 

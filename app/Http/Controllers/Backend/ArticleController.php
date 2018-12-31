@@ -93,7 +93,9 @@ class ArticleController extends Controller {
 
 		$article = $this->findArticleById($articleId, $articleRepository);
 
-		return view('backend.article.edit', compact('article', 'categories'));
+		$tags = $article->tags;
+
+		return view('backend.article.edit', compact('article', 'categories', 'tags'));
 	}
 
 	public function postEdit(
@@ -105,7 +107,7 @@ class ArticleController extends Controller {
 		$article = $this->findArticleById($articleId, $articleRepository);
 
 		$article->title = $request->get('title');
-		//$article->slug = Str::slug($article->title);
+		$article->slug = Str::slug($article->title);
 		$article->body = $request->get('body');
 		$article->is_published = $request->get('is_published');
 		$date = \DateTime::createFromFormat('d/m/Y H:i', $request->get('published_at'));
@@ -130,6 +132,8 @@ class ArticleController extends Controller {
 							->withInput()
 							->with('error_message', 'Problemi in fase di modifica. Riprovare.');
 			}
+
+			$tags = $article->retag($request->get('tags'));
 
 			$request->session()->flash('success_message', 'Articolo correttamente modificato!');
 			return redirect('backend/indexarticle');
