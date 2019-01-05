@@ -157,7 +157,19 @@ class ArticleController extends Controller {
 		if ($request->hasFile('postimage')) {
 			$postimage = $request->file('postimage');
 			$filename = time() .  '_' . $article->id . '_' . $article->title . '.' . $postimage->getClientOriginalExtension();
-			Image::make($postimage)->resize(500, 200)->save(public_path('/uploads/images' . "/" . $filename));
+			$filePath = public_path('/uploads/images' . "/" . $filename);
+			//Image::make($postimage)->resize(750, 300)->save(public_path('/uploads/images' . "/" . $filename));
+			$savedImage = Image::make($postimage)->save($filePath);
+			$width = $savedImage->width();
+			$height = $savedImage->height();
+			$newImage = Image::make($filePath);
+      if ($width < 750 or $height < 300)
+			{
+				$newImage->resize(750, 300)->save($filePath);
+			} else {
+				$newImage->crop(750,300)->save($filePath);
+			}
+
 			$article->post_image = $filename;
 			return $article;
 		}

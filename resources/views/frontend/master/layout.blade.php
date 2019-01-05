@@ -192,12 +192,18 @@
                         readingTimeTarget: $(this).find('.eta'),
                         wordCountTarget: $(this).find('.words'),
                         remotePath: $(this).attr('data-file'),
-                        remoteTarget: $(this).attr('data-target')
+                        remoteTarget: $(this).attr('data-target'),
+                        error: function(message) {
+                          console.log(message);
+                          $(this).find('.eta').remove();
+                        }
                     });
 
                 });
 
             });
+
+
 
         </script>
      <script id="dsq-count-scr" src="//enricoromeo.disqus.com/count.js" async></script>

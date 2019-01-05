@@ -5,78 +5,26 @@
 @section('content')
 
 	<article class="blog-post">
-	    <div class="blog-post-image">
-	        <a href="post.html"><img src="images/750x500-3.jpg" alt=""></a>
-	    </div>
+
 	    <div class="blog-post-body">
-	        <h2 class="post-title">
-	            <a href="{{ url('articolo/' . $article->slug) }}">{{ $article->title  }}</a>
-	        </h2>
-	        <div class="post-meta">
 
-	            <span>
-	            	<i class="fa fa-user"></i>by
-	                <a href="{{ url('autore/' . $article->user->slug)  }}">
-	                   {{ $article->user->first_name . ' ' . $article->user->last_name }}
-	                </a>
-	            </span>/
-	            <span>
-	                <i class="fa fa-clock-o"></i>{{ date('d/m/Y H:i', strtotime($article->published_at)) }}
-	            </span>/
-	            <span>
-	            	<i class="fa fa-comment-o"></i>
-	            	<a href="{{ url('articolo/' . $article->slug) }}#disqus_thread">343</a>
-	            </span>/
-	            <span>
-	            	<i class="fa fa-book"></i>
-	            	 <a class="eta">
+					@include('frontend.includes.list_categories')
 
-	          		 </a> to read <a class="words"></a> words
-	            </span>
+					@include('frontend.includes.post_image')
 
-
-	        </div>
+					@include('frontend.includes.post_title_and_meta')
 
 	        {!! $article->body !!}
 
-					@if (count($article->tags) >= 1)
-					<div class="post-meta">
-						<i class="fa fa-tag"></i>Tag
-						<span>
-							@foreach ($article->tags as $tag)
-								<span><a href="{{ url('tag/' . $tag->name)  }}">{{$tag->count . " " . $tag->name }}</span> </a>
-								@if(!$loop->last)
-									/
-								@endif
-							@endforeach
-						</span>
-					</div>
-					@endif
+					<br>
+
+				  @include('frontend.includes.tags')
 
 					<div id="disqus_thread"></div>
 
 	    </div>
 
 	</article>
-	    <script>
-
-			$(function() {
-
-				$('article').readingTime({
-					readingTimeTarget: $(this).find('.eta'),
-					wordCountTarget: $(this).find('.words'),
-					success: function() {
-						console.log('It worked!');
-					},
-					error: function(message) {
-						console.log(message);
-						$(this).find('.eta').remove();
-					}
-				});
-
-			});
-
-		</script>
 
 		<script>
 

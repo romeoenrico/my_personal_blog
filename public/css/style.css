@@ -197,6 +197,11 @@ header {
 	padding-right: 5px;
 	font-size: 12px;
 }
+
+.blog-post .blog-post-image img {
+	border-radius: 10px;
+}
+
 .blog-post .read-more a {
 	display: inline-block;
 	padding: 12px 40px;
