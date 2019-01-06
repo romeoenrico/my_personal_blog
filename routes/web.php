@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +15,7 @@ Route::get('articolo/{slug}', 'FrontendController@getArticolo')->name('article')
 Route::get('autore/{slug}', 'FrontendController@getAutore');
 Route::get('categoria/{slug}', 'FrontendController@getCategoria');
 Route::get('tag/{tags}', 'FrontendController@getIndexByTag');
+Route::get('trending', 'FrontendController@getTrandingArticles');
 
 Route::get('dashboard', 'Backend\SessionsController@getIndex');
 

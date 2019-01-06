@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Redis;
 
 class Article extends Model {
 
@@ -73,6 +74,14 @@ public function unpublish()	{
 			->get()
 			->toArray();
 
+	}
+
+	public static function getTrendingArticles(){
+		 $trending = Redis::zrevrange('trending_articles', 0, 2);
+		 $trending = \App\Article::hydrate(
+				array_map('json_decode', $trending)
+		 );
+		 return $trending;
 	}
 
 }

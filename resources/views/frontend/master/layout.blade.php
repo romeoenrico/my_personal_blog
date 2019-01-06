@@ -7,7 +7,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="il blog di Enrico Romeo">
         <meta name="author" content="Enrico Romeo">
-        <link rel="icon" href="favicon.ico">
+        <link rel="icon" href="{{ asset('img/favicon.ico')}}">
         <title>@yield('title') - Il Blog di Enrico</title>
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -87,26 +87,25 @@
                     </div>
                     <!-- sidebar-widget -->
                     <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Featured Posts</h3>
+                        <h3 class="sidebar-title">Most Popular</h3>
                         <div class="widget-container">
-
-                            @foreach($articles as $featuredpost)
+                          @if($trendingArticles)
+                            @foreach($trendingArticles as $mostPopularArticle)
 
                                 <article class="widget-post">
                                     <div class="post-image">
                                         <a href="post.html"><img src="images/90x60-1.jpg" alt=""></a>
                                     </div>
                                     <div class="post-body">
-                                        <h2><a href="{{ url('articolo/' . $featuredpost->slug) }}">{{ $featuredpost->title }}</a></h2>
+                                        <h2><a href="{{ url('articolo/' . $mostPopularArticle->slug) }}">{{ $mostPopularArticle->title }}</a></h2>
                                         <div class="post-meta">
                                             <span><i class="fa fa-clock-o"></i> 2. august 2015</span> <span><a href="post.html"><i class="fa fa-comment-o"></i> 23</a></span>
                                         </div>
                                     </div>
                                 </article>
 
-
                             @endforeach
-
+                          @endif
                         </div>
                     </div>
                     <!-- sidebar-widget -->

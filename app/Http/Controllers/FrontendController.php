@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Article;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ArticleRepository;
+use Illuminate\Support\Facades\Redis;
 
 class FrontendController extends Controller {
 
 	public function getIndex()
 	{
 		// prelevo gli articoli (includendo i dati sulle rispettive categorie ed autore associati)
-		$articles = \App\Article::with('categories', 'user')->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(5);
-
-		return view('frontend.home', ['articles' => $articles]);
+		$articles = Article::with('categories', 'user')->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(5);
+    $articlesForSlider = $articles->take(3);
+		return view('frontend.home', ['articles' => $articles, 'articlesForSlider' => $articlesForSlider]);
 	}
 
 	/**
@@ -36,8 +37,20 @@ class FrontendController extends Controller {
 	public function getArticolo($slug) {
 
 		$article = \App\Article::with('categories', 'user')->where('slug', '=', $slug)->first();
+		Redis::zincrby('trending_articles', 1, $article);
 
 		return view('frontend.article', compact('article'));
+	}
+
+	public function getTrandingArticles() {
+
+     $trending = Redis::zrevrange('trending_articles', 0, 2);
+
+		 $trending = \App\Article::hydrate(
+			 	array_map('json_decode', $trending)
+		 );
+	   return($trending);
+
 	}
 
 	public function getAutore($slug) {
