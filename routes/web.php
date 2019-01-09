@@ -10,12 +10,12 @@
 |
  */
 
-Route::get('/', 'FrontendController@getIndex');
-Route::get('articolo/{slug}', 'FrontendController@getArticolo')->name('article');
-Route::get('autore/{slug}', 'FrontendController@getAutore');
-Route::get('categoria/{slug}', 'FrontendController@getCategoria');
-Route::get('tag/{tags}', 'FrontendController@getIndexByTag');
-Route::get('trending', 'FrontendController@getTrandingArticles');
+Route::get('/', 'FrontendController@getIndex')->name('front.home');
+Route::get('article/{slug}', 'FrontendController@getArticolo')->name('front.article');
+Route::get('author/{slug}', 'FrontendController@getAutore')->name('front.author');
+Route::get('category/{slug}', 'FrontendController@getCategoria')->name('front.category');
+Route::get('tag/{tag}', 'FrontendController@getIndexByTag')->name('front.tag');
+Route::get('trending', 'FrontendController@getTrandingArticles')->name('front.trending');
 
 Route::get('dashboard', 'Backend\SessionsController@getIndex');
 

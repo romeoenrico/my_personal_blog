@@ -1,12 +1,9 @@
 @if (count($article->tags) >= 1)
-<div class="post-meta">
-  <span>
-    @foreach ($article->tags as $tag)
-      <span>  <i class="fa fa-tag"></i><a href="{{ url('tag/' . $tag->name)  }}">{{$tag->count . " " . $tag->name }}</span> </a>
-      @if(!$loop->last)
-        /
-      @endif
-    @endforeach
-  </span>
-</div>
+  <div class="tag-widget post-tag-container mb-5 mt-5">
+    <div class="tagcloud">
+      @foreach ($article->tags as $tag)
+          <a href="{{ route('front.tag', $tag->name) }}" class="tag-cloud-link">{{ $tag->name }}</a>
+      @endforeach
+    </div>
+  </div>
 @endif

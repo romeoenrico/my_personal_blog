@@ -1,27 +1,23 @@
-<article class="blog-post">
 
-    <div class="blog-post-body">
+<div class="col-md-6">
+  <div class="blog-entry ftco-animate">
+    <a href="{{ route('front.article', $article->slug) }}" class="blog-image">
+      <img src=" {{ asset('uploads/images') . "/" . $article->post_image }} " class="img-fluid" alt="">
+    </a>
+    <div class="text py-4">
 
-        @include('frontend.includes.list_categories')
+      @include('frontend.includes.post_title_and_meta')
 
-        @include('frontend.includes.post_image')
-
-        @include('frontend.includes.post_title_and_meta')
-
-        @if(str_word_count($article->body) > 150)
-
-            {!! \Illuminate\Support\Str::words($article->body, 250,'....')  !!}
-            <div class="read-more">
-                <a href="{{ url('articolo/' . $article->slug)  }}">Continue Reading </a>
-            </div>
-            <br>
-            @include('frontend.includes.tags')
-        @else
-
+      @if(str_word_count($article->body) > 50)
+        <p>
+          {!! \Illuminate\Support\Str::words($article->body, 50,'....')  !!}
+        </p>
+        <h7><a href="{{ route('front.article', $article->slug) }}">Read More</a></h7>
+      @else
+        <p>
           {!! $article->body !!}
-          <br>
-          @include('frontend.includes.tags')
-        @endif
+        </p>
+      @endif
     </div>
-
-</article>
+  </div>
+</div>

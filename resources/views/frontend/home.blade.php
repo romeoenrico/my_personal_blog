@@ -6,14 +6,30 @@
 
 @section('content')
 
- 	  @include('frontend.includes.main_slider')
 
-    @foreach($articles as $article)
+    <div class="page-container float-right">
 
-        @include('frontend.includes.articles_list_item', ['article' => $article])
+      @foreach ($articles->chunk(4) as $chunk)
+        <div class="row">
+          @foreach ($chunk as $article)
+              @include('frontend.includes.articles_list_item', ['article' => $article])
+          @endforeach
+        </div>
+      @endforeach
 
-    @endforeach
+      <div class="row mt-5">
+        <div class="col text-center">
+          <div class="block-27">
 
-    {!! $articles->render() !!}
+            {!! $articles->render() !!}
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end: page-container-->
+
+
+
 
 @endsection
