@@ -11,12 +11,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class FrontendController extends Controller {
 
-	public function getIndex()
+	public function getIndex(ArticleRepository $articleRepository)
 	{
 		// prelevo gli articoli (includendo i dati sulle rispettive categorie ed autore associati)
+		//$query = $articleRepository->getAll(10); 
 		$articles = Article::with('categories', 'user')->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(10);
-    $articlesForSlider = $articles->take(3);
-		return view('frontend.home', ['articles' => $articles, 'articlesForSlider' => $articlesForSlider]);
+
+		return view('frontend.home', ['articles' => $articles]);
 	}
 
 	/**
@@ -60,7 +61,7 @@ class FrontendController extends Controller {
 
 	}
 
-	public function getAutore($slug) {
+	public function getAuthor($slug) {
 
 		$author = \App\User::where('slug', '=', $slug)->first();
 		$articles = $author->articles()->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(5);

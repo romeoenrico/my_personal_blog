@@ -8,12 +8,15 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('css/cssresources.css')}}"
+    <link rel="stylesheet" href="{{asset('css/cssresources.css')}}">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 
 
   </head>
   <body>
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
     <nav id="colorlib-main-nav" role="navigation">
       <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
       <div class="js-fullheight colorlib-table">

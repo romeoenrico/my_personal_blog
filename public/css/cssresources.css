@@ -16817,11 +16817,6 @@ header {
       header .colorlib-navbar-brand .colorlib-logo:active, header .colorlib-navbar-brand .colorlib-logo:focus {
         outline: none;
         text-decoration: none; }
-#sliderTitleAndCat{
-  position: absolute;
-bottom: 0;
-left: 0;
-}
 .colorlib-nav-toggle {
   cursor: pointer;
   text-decoration: none;

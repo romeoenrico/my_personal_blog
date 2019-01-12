@@ -152,12 +152,13 @@ class ArticleController extends Controller {
 
 	private function update_postImage(Request $request, Article $article) {
 
-		$postimage = $request->file('postimage');
-		$filename = time() .  '_' . $article->id . '_' . $article->title . '.' . $postimage->getClientOriginalExtension();
-		Image::make($postimage)->save(public_path('/uploads/images' . "/" . $filename));
-		$article->post_image = $filename;
-		return $article;
-
+		if ($request->hasFile('postimage')) {
+				$postimage = $request->file('postimage');
+				$filename = time() .  '_' . $article->id . '_' . $article->title . '.' . $postimage->getClientOriginalExtension();
+				Image::make($postimage)->save(public_path('/uploads/images' . "/" . $filename));
+				$article->post_image = $filename;
+				return $article;
+		}
 
 	}
 
