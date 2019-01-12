@@ -1,19 +1,34 @@
 @extends('frontend.master.layout')
 
-@section('title') Articoli nella Categoria: {{ $currentCategory->name }} @endsection
+@section('title') Home Page @endsection
 
-@section('subheading') Articoli nella Categoria: {{ $currentCategory->name }} @endsection
+@section('subheading') Developer, Photographer @endsection
 
 @section('content')
 
-    @foreach($articles as $article)
 
-         @include('frontend.includes.articles_list_item', ['article' => $article])
+    <div class="page-container float-right">
 
-    @endforeach
+      @foreach ($articles->chunk(4) as $chunk)
+        <div class="row">
+          @foreach ($chunk as $article)
+              @include('frontend.includes.articles_list_item', ['article' => $article])
+          @endforeach
+        </div>
+      @endforeach
 
-    <div style="text-align: center;">
-        {!! $articles->render() !!}
-    </div>
+      <div class="row mt-5">
+        <div class="col text-center">
+          <div class="block-27">
+
+            {!! $articles->render() !!}
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end: page-container-->
+
+
 
 @endsection

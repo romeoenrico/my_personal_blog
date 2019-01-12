@@ -24,25 +24,6 @@ class Article extends Model {
 
   }
 
-	public function isPublished() {
-
-		return !is_null($this->published_at);
-
-	}
-
-	public function publish($publicationDate)	{
-
-		$this->published_at = $publicationDate;
-
-	}
-
-public function unpublish()	{
-
-		$this->published_at = null;
-
-}
-
-
 	public function user() {
 
 		return $this->belongsTo('App\User');

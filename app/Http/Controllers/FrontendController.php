@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ArticleRepository;
 use Illuminate\Support\Facades\Redis;
+use App\Exceptions\NotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class FrontendController extends Controller {
 
 	public function getIndex()
 	{
 		// prelevo gli articoli (includendo i dati sulle rispettive categorie ed autore associati)
-		$articles = Article::with('categories', 'user')->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(5);
+		$articles = Article::with('categories', 'user')->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(10);
     $articlesForSlider = $articles->take(3);
 		return view('frontend.home', ['articles' => $articles, 'articlesForSlider' => $articlesForSlider]);
 	}
@@ -34,12 +36,17 @@ class FrontendController extends Controller {
 			return view('frontend.articlebytag', ['articles' => $articles]);
 	}
 
-	public function getArticolo($slug) {
+	public function getArticle(ArticleRepository $articleRepository, $slug) {
 
-		$article = \App\Article::with('categories', 'user')->where('slug', '=', $slug)->first();
-		Redis::zincrby('trending_articles', 1, $article);
+		try {
+				$article = $articleRepository->findBySlug($slug, true);
+				//for trening articles
+				Redis::zincrby('trending_articles', 1, $article);
+				return view('frontend.article', compact('article'));
+	  } catch (NotFoundException $e) {
+				throw new NotFoundHttpException;
+		}
 
-		return view('frontend.article', compact('article'));
 	}
 
 	public function getTrandingArticles() {

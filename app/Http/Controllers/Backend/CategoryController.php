@@ -54,7 +54,7 @@ class CategoryController extends Controller {
 	}
 
 	public function getEdit($categoryId) {
-		$category = Category::find($categoryId);
+		$category = Category::findOrFail($categoryId);
 		return view('backend.category.edit', compact('category'));
 	}
 
@@ -80,7 +80,7 @@ class CategoryController extends Controller {
 	}
 
 	public function getDelete($categoryId, Request $request) {
-		Category::find($categoryId)->delete();
+		Category::findOrFail($categoryId)->delete();
 
 		$request->session()->flash('success_message', 'Categoria cancellata correttamente !');
 		return redirect('backend/indexcategory');

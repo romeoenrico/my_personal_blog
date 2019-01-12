@@ -2,8 +2,6 @@
 
 @section('title') Home Page @endsection
 
-@section('subheading') Developer, Photographer @endsection
-
 @section('content')
 
 

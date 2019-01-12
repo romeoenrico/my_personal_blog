@@ -8,7 +8,7 @@ use App\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use App\Exceptions\NotSavedException;
-use App\Exceptions\NonFoundException;
+use App\Exceptions\NotFoundException;
 use App\Exceptions\NotDeletedException;
 
 
@@ -64,4 +64,27 @@ class ArticleRepository
             throw new NotDeletedException();
         }
     }
+
+    /**
+      * Restituisce un articolo a partire dal suo slug.
+      *
+      * @param $slug
+      * @return Model
+      * @throws NotFoundException
+      */
+     public function findBySlug($slug)
+     {
+         $query = Article::with(['user', 'categories']);
+         $query->where('published_at', '<=', Carbon::now());
+         $query->where('is_published', '=', true);
+
+         $result = $query->where('slug', '=', $slug)->first();
+         if (!$result) {
+             throw new NotFoundException();
+         }
+         return $result;
+     }
+
+
+
 }

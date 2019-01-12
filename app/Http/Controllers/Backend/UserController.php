@@ -64,7 +64,7 @@ class UserController extends Controller {
 	}
 
 	public function getDelete($userId, Request $request) {
-		$userToDelete = User::find($userId);
+		$userToDelete = User::findOrFail($userId);
 		$userToDelete->delete();
 		//$userId->delete();
 

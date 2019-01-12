@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('css/cssresources.css')}}"
 
@@ -43,7 +43,7 @@
 	        <div class="row no-gutters">
 	          <div class="col-md-12">
 	            <div class="colorlib-navbar-brand">
-	              <a class="colorlib-logo" href="{{ route('front.home')}} ">Enrico Romeo</a>
+	              <a class="colorlib-logo" href="{{ route('front.home')}} "><b>er</b>omeo<span>.codes</span></a>
 	            </div>
 	            <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 	          </div>
@@ -56,14 +56,14 @@
           <div class="home-slider owl-carousel js-fullheight">
             @if ($trendingArticles)
                 @foreach ($trendingArticles as $article)
-                  <div class="slider-item js-fullheight" style="background-image: url('{{ asset('images/bg_1.jpg') }}');">
+                  <div class="slider-item js-fullheight" style="background-image: url('{{ asset('uploads/images') . "/" . $article->post_image }}');">
                     <div class="overlay"></div>
                     <div class="container">
                       <div class="row slider-text align-items-end" data-scrollax-parent="true">
                         <div class="col-md-10 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                             @if($article->categories)
                               @foreach ($article->categories as $category)
-                                  <p class="cat"><span>{{ $category->name }}</span></p>
+                                  <p class="cat"><a href="{{ route("front.category", $category->name) }}" style="color:white;"><span>{{ $category->name }}</span></a></p>
                               @endforeach
                             @endif
                           <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $article->title }}</h1>
@@ -87,15 +87,10 @@
 
   	</div>
 
-  <script src="{{ asset('js/jsresources.js') }}"></script>
 
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{{ asset('todeletejs/google-map.js') }}"></script>
-
-
-
-
+    <script src="{{ asset('js/jsresources.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{{ asset('todeletejs/google-map.js') }}"></script>
 
   </body>
 </html>

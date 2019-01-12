@@ -2,8 +2,6 @@
 
 @section('title') Articoli di {{ $author->first_name . ' ' . $author->last_name }} @endsection
 
-@section('subheading') Articoli di {{ $author->first_name . ' ' . $author->last_name }} @endsection
-
 @section('content')
 
     @foreach($articles as $article)

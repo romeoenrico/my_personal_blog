@@ -150,29 +150,14 @@ class ArticleController extends Controller {
 		return redirect('backend/indexarticle')->with('success_message', 'Articolo cancellato correttamente.');
 	}
 
-	private function update_postImage(
-			Request $request,
-			Article $article) {
+	private function update_postImage(Request $request, Article $article) {
 
-		if ($request->hasFile('postimage')) {
-			$postimage = $request->file('postimage');
-			$filename = time() .  '_' . $article->id . '_' . $article->title . '.' . $postimage->getClientOriginalExtension();
-			$filePath = public_path('/uploads/images' . "/" . $filename);
-			//Image::make($postimage)->resize(750, 300)->save(public_path('/uploads/images' . "/" . $filename));
-			$savedImage = Image::make($postimage)->save($filePath);
-			$width = $savedImage->width();
-			$height = $savedImage->height();
-			$newImage = Image::make($filePath);
-      if ($width < 750 or $height < 300)
-			{
-				$newImage->resize(750, 300)->save($filePath);
-			} else {
-				$newImage->crop(750,300)->save($filePath);
-			}
+		$postimage = $request->file('postimage');
+		$filename = time() .  '_' . $article->id . '_' . $article->title . '.' . $postimage->getClientOriginalExtension();
+		Image::make($postimage)->save(public_path('/uploads/images' . "/" . $filename));
+		$article->post_image = $filename;
+		return $article;
 
-			$article->post_image = $filename;
-			return $article;
-		}
 
 	}
 
