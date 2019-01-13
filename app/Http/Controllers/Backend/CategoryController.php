@@ -6,6 +6,8 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Repositories\CategoryRepository;
+
 
 class CategoryController extends Controller {
 
@@ -13,8 +15,8 @@ class CategoryController extends Controller {
 		$this->middleware('auth');
 	}
 
-	public function getIndex() {
-		$categories = Category::with('articles')->orderBy('created_at', 'DESC')->paginate(10);
+	public function getIndex(CategoryRepository $categoryRepository) {
+	  $categories = $categoryRepository->getAll();
 		return view('backend.category.list', compact('categories'));
 	}
 
@@ -22,7 +24,7 @@ class CategoryController extends Controller {
 		return view('backend.category.add');
 	}
 
-	public function postAdd(Request $request) {
+	public function postAdd(Request $request, CategoryRepository $categoryRepository) {
 		$this->validate(request(), [
 
 			'name' => 'required',
@@ -34,7 +36,6 @@ class CategoryController extends Controller {
 			'description.required' => "Specificare la descrizione.",
 		]);
 
-		//Create and Save the Users
 		$name = $request->name;
 		$description = $request->description;
 		$slug = Str::slug($name);
@@ -43,11 +44,14 @@ class CategoryController extends Controller {
 			'name' => $name,
 			'description' => $description,
 			'slug' => $slug,
-
 		]);
 
-		//dd(request()->session());
-		//request()->session()->flash('success_message', 'Categoria aggiunta correttamente !');
+		try {
+            $categoryRepository->save($category);
+    } catch (NotSavedException $e) {
+            return redirect('backend/indexcategory')->with('error_message', 'Impossibile aggiungere la categoria. Riprovare.');
+    }
+
 		$request->session()->flash('success_message', 'Category was successful added!');
 		return redirect('backend/indexcategory');
 
@@ -58,7 +62,7 @@ class CategoryController extends Controller {
 		return view('backend.category.edit', compact('category'));
 	}
 
-	public function postEdit($categoryId) {
+	public function postEdit(CategoryRepository $categoryRepository, $categoryId) {
 		$this->validate(request(), [
 			'name' => 'required',
 			'description' => 'required',
@@ -67,20 +71,40 @@ class CategoryController extends Controller {
 			'description.required' => "Specificare la descrizione.",
 		]);
 
-		$category = Category::find($categoryId);
+		try {
+					 /* @var $category Category */
+					 $category = $categoryRepository->findById($categoryId);
+		} catch (NotFoundException $e) {
+					 return redirect('backend/indexcategory')->with('error_message', 'La categoria scelta non esiste o non è più disponibile.');
+	  }
 
 		$category->name = request()->input('name');
 		$category->slug = Str::slug($category->name);
 		$category->description = request()->input('description');
 
-		$category->save();
+		try {
+					 $categoryRepository->save($category);
+		} catch (NotDeletedException $e) {
+				return redirect('backend/indexcategory')->with('error_message', 'Impossibile salvare le modifiche per questa categoria. Riprovare.');
+		}
 
-		return redirect('backend/editcategory/' . $categoryId)->with('success_message', 'Categoria modificata correttamente.');
+		return redirect('backend/indexcategory')->with('success_message', 'Categoria modificata correttamente.');
 
 	}
 
-	public function getDelete($categoryId, Request $request) {
-		Category::findOrFail($categoryId)->delete();
+	public function getDelete(CategoryRepository $categoryRepository, $categoryId, Request $request) {
+
+		try {
+            /* @var $category Category */
+            $category = $categoryRepository->findById($categoryId);
+    } catch (NotFoundException $e) {
+        return redirect('backend/indexcategory')->with('error_message', 'La categoria cercata non esiste o non è più disponibile.');
+    }
+    try {
+        $categoryRepository->delete($category);
+    } catch (NotDeletedException $e) {
+        return redirect('backend/indexcategory')->with('error_message', 'Impossibile elminare la categoria scelta. Riprovare.');
+    }
 
 		$request->session()->flash('success_message', 'Categoria cancellata correttamente !');
 		return redirect('backend/indexcategory');

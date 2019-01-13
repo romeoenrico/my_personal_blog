@@ -162,7 +162,7 @@ class ArticleController extends Controller {
 
 	}
 
-	private function findArticleById($articleId, $articleRepository){
+	private function findArticleById($articleId, ArticleRepository $articleRepository){
 		try {
 				$article = $articleRepository->findById($articleId);
 		} catch (NotFoundException $e) {
@@ -170,6 +170,7 @@ class ArticleController extends Controller {
 		}
 			return $article;
 	}
+
 
 
 

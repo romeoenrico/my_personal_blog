@@ -10,12 +10,16 @@ use App\Observers\DetachCategoriesBeforeArticleDelete;
 use App\Observers\DetachArticlesWhenDeletingCategory;
 use App\Observers\DeletePostImageFileWhenDeletingArticle;
 
+
 class AppServiceProvider extends ServiceProvider {
+
+
 	/**
 	 * Bootstrap any application services.
 	 *
 	 * @return void
 	 */
+
 	public function boot() {
 
 		Article::observe(DetachCategoriesBeforeArticleDelete::class);
@@ -29,15 +33,12 @@ class AppServiceProvider extends ServiceProvider {
 			$view->with('categories', Category::all());
 		//	$view->with('articles', Article::orderBy('id', 'desc')->take(5)->get());
 			$view->with('archives', Article::archives());
+
 			$view->with('trendingArticles', Article::getTrendingArticles());
 
 		});
 
-		//view()->composer('backend.master.layout', function ($view) {
 
-		//	$view->with('currentUser', Auth::user()->first_name);
-
-		//});
 	}
 
 	/**
@@ -48,4 +49,6 @@ class AppServiceProvider extends ServiceProvider {
 	public function register() {
 		//
 	}
+
+
 }

@@ -68,7 +68,7 @@
 
         <nav class="navbar navbar-default navbar-fixed-bottom panel-footer">
           <div class="col-md-10 col-md-offset-1">
-            <p>A Very Simple Admin Template / Right to Copy - 2017 / Enrico Romeo</p>
+            <p>A Very Simple Admin Template</p>
           </div>
         </nav>
 

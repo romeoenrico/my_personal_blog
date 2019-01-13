@@ -65,4 +65,5 @@ class Article extends Model {
 		 return $trending;
 	}
 
+
 }

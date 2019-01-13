@@ -14,6 +14,15 @@ class Category extends Model {
 		'slug',
 	];
 
+	public static function createFromName($name)
+ {
+		 $category = new self();
+		 $category->name = $name;
+		 $category->slug = Str::slug($name);
+		 return $category;
+ }
+
+
 	public function articles() {
 
 		return $this->belongsToMany('App\Article');

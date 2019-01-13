@@ -34,6 +34,5 @@
 
     </table>
 
-    {{ $categories->render() }}
-
+  
 @endsection

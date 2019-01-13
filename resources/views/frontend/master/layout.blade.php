@@ -24,10 +24,10 @@
           <div class="row d-flex justify-content-end">
             <div class="col-md-12 px-5">
               <ul class="mb-5">
-                <li class="active"><a href="index.html"><span>Home</span></a></li>
+                @if(request()->is("/"))<li class="active">@else<li>@endif<a href="{{ route('front.home') }}"><span>Home</span></a></li>
                 @if ($categories)
                   @foreach ($categories as $category)
-                    <li><a href="{{ route('front.category', $category->slug) }} "><span>{{$category->name}}</span></a></li>
+                    @if(request()->is('category/'. $category->slug))<li class="active">@else<li>@endif<a href="{{ route('front.category', $category->slug) }} "><span>{{$category->name}}</span></a></li>
                   @endforeach
                 @endif
               </ul>

@@ -5,6 +5,7 @@ use App\Article;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ArticleRepository;
+use App\Repositories\CategoryRepository;
 use Illuminate\Support\Facades\Redis;
 use App\Exceptions\NotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -14,7 +15,7 @@ class FrontendController extends Controller {
 	public function getIndex(ArticleRepository $articleRepository)
 	{
 		// prelevo gli articoli (includendo i dati sulle rispettive categorie ed autore associati)
-		//$query = $articleRepository->getAll(10); 
+		//$query = $articleRepository->getAll(10);
 		$articles = Article::with('categories', 'user')->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(10);
 
 		return view('frontend.home', ['articles' => $articles]);
@@ -50,29 +51,26 @@ class FrontendController extends Controller {
 
 	}
 
-	public function getTrandingArticles() {
+	public function getTrendingArticles(ArticleRepository $articleRepository) {
 
-     $trending = Redis::zrevrange('trending_articles', 0, 2);
-
-		 $trending = \App\Article::hydrate(
-			 	array_map('json_decode', $trending)
-		 );
-	   return($trending);
+			 $trending = Redis::zrevrange('trending_articles', 0, 2);
+			 $trending = \App\Article::hydrate(
+					array_map('json_decode', $trending)
+			 );
+			 return $trending;
 
 	}
 
-	public function getAuthor($slug) {
 
-		$author = \App\User::where('slug', '=', $slug)->first();
-		$articles = $author->articles()->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(5);
+	public function getCategory(CategoryRepository $categoryRepository, $slug) {
 
-		return view('frontend.author', compact('author', 'articles'));
-	}
+		try {
+				$currentCategory = $categoryRepository->findBySlug($slug);
+	  } catch (NotFoundException $e) {
+				throw new NotFoundHttpException;
+		}
 
-	public function getCategoria($slug) {
-
-		$currentCategory = \App\Category::where('slug', '=', $slug)->first();
-		$articles = $currentCategory->articles()->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(5);
+		$articles = $currentCategory->articles()->where('published_at', '<=', 'NOW()')->where('is_published', '=', true)->orderBy('published_at', 'DESC')->paginate(10);
 
 		return view('frontend.category', compact('currentCategory', 'articles'));
 	}

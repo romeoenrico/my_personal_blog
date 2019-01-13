@@ -85,6 +85,5 @@ class ArticleRepository
          return $result;
      }
 
-
-
+     
 }
