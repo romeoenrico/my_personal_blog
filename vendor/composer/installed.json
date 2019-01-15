@@ -4570,5 +4570,195 @@
             "parser",
             "php"
         ]
+    },
+    {
+        "name": "unisharp/laravel-filemanager",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/UniSharp/laravel-filemanager.git",
+            "reference": "7cac8bf9107a564c6a461d6f8d03526aa353d0ad"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/7cac8bf9107a564c6a461d6f8d03526aa353d0ad",
+            "reference": "7cac8bf9107a564c6a461d6f8d03526aa353d0ad",
+            "shasum": ""
+        },
+        "require": {
+            "ext-exif": "*",
+            "ext-fileinfo": "*",
+            "illuminate/config": "5.4.* || 5.5.* || 5.6.* || 5.7.*",
+            "illuminate/container": "5.4.* || 5.5.* || 5.6.* || 5.7.*",
+            "illuminate/filesystem": "5.4.* || 5.5.* || 5.6.* || 5.7.*",
+            "illuminate/http": "5.4.* || 5.5.* || 5.6.* || 5.7.*",
+            "illuminate/support": "5.4.* || 5.5.* || 5.6.* || 5.7.*",
+            "intervention/image": "2.*",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^0.9.9",
+            "phpunit/phpunit": "^6.2",
+            "squizlabs/php_codesniffer": "^3.1"
+        },
+        "suggest": {
+            "ext-gd": "to use GD library based image processing.",
+            "ext-imagick": "to use Imagick based image processing."
+        },
+        "time": "2019-01-10T05:40:43+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider"
+                ],
+                "aliases": []
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "UniSharp\\LaravelFilemanager\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Trevor Sawler",
+                "email": "trevor.sawler@gmail.com"
+            },
+            {
+                "name": "UniSharp Ltd.",
+                "email": "opensource@unisharp.com"
+            }
+        ],
+        "description": "A file upload/editor intended for use with Laravel 5 and CKEditor / TinyMCE",
+        "keywords": [
+            "CKEditor",
+            "file",
+            "filemanager",
+            "image",
+            "laravel",
+            "manager",
+            "tinymce",
+            "upload"
+        ]
+    },
+    {
+        "name": "spatie/image-optimizer",
+        "version": "1.1.3",
+        "version_normalized": "1.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spatie/image-optimizer.git",
+            "reference": "90d6eebf9a84cc88e4cd2af3928004ba59e693a4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/90d6eebf9a84cc88e4cd2af3928004ba59e693a4",
+            "reference": "90d6eebf9a84cc88e4cd2af3928004ba59e693a4",
+            "shasum": ""
+        },
+        "require": {
+            "ext-fileinfo": "*",
+            "php": "^7.0",
+            "psr/log": "^1.0",
+            "symfony/process": "^2.8|^3.0|^4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.2|^7.0",
+            "symfony/var-dumper": "^3.0|^4.0"
+        },
+        "time": "2018-11-19T22:17:30+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spatie\\ImageOptimizer\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://spatie.be",
+                "role": "Developer"
+            }
+        ],
+        "description": "Easily optimize images using PHP",
+        "homepage": "https://github.com/spatie/image-optimizer",
+        "keywords": [
+            "image-optimizer",
+            "spatie"
+        ]
+    },
+    {
+        "name": "spatie/laravel-image-optimizer",
+        "version": "1.3.2",
+        "version_normalized": "1.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spatie/laravel-image-optimizer.git",
+            "reference": "d4c8f831d60f3a68dc5323910a6670d9819a4e3e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/spatie/laravel-image-optimizer/zipball/d4c8f831d60f3a68dc5323910a6670d9819a4e3e",
+            "reference": "d4c8f831d60f3a68dc5323910a6670d9819a4e3e",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "~5.5.0|~5.6.0|~5.7.0",
+            "php": "^7.0",
+            "spatie/image-optimizer": "^1.1.0"
+        },
+        "require-dev": {
+            "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
+            "phpunit/phpunit": "^6.3|^7.0"
+        },
+        "time": "2018-08-27T14:44:11+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Spatie\\LaravelImageOptimizer\\ImageOptimizerServiceProvider"
+                ],
+                "aliases": {
+                    "ImageOptimizer": "Spatie\\LaravelImageOptimizer\\Facades\\ImageOptimizer"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spatie\\LaravelImageOptimizer\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://spatie.be",
+                "role": "Developer"
+            }
+        ],
+        "description": "Optimize images in your Laravel app",
+        "homepage": "https://github.com/spatie/laravel-image-optimizer",
+        "keywords": [
+            "laravel-image-optimizer",
+            "spatie"
+        ]
     }
 ]

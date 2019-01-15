@@ -39,7 +39,7 @@
 
         <p>
             <label for="description">Descrizione:</label>
-            <textarea class="form-control" name="body" id="body" cols="30" rows="10">{{$article->body}}</textarea>
+            <textarea class="form-control" id="my-editor" name="body" id="body" cols="30" rows="10">{{$article->body}}</textarea>
         </p>
 
         <p>
@@ -109,18 +109,9 @@
 
     </form>
 
-    <!--<script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>-->
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=your_API_key"></script>
+    <script src="{{ asset('js/backend/mytinymce.js') }}"></script>
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <script>
-        tinymce.init({
-            selector:'textarea#body',
-            plugins: 'image, code, textcolor, codesample',
-            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-        });
 
         $(document).ready(function(){
             $("#categories").select2();

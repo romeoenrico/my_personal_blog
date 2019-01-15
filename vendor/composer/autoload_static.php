@@ -10,14 +10,14 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
 
@@ -34,6 +34,10 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
+        ),
+        'U' => 
+        array (
+            'UniSharp\\LaravelFilemanager\\' => 28,
         ),
         'T' => 
         array (
@@ -57,6 +61,8 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\LaravelImageOptimizer\\' => 29,
+            'Spatie\\ImageOptimizer\\' => 22,
         ),
         'R' => 
         array (
@@ -142,6 +148,10 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
+        'UniSharp\\LaravelFilemanager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src',
+        ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
             0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
@@ -209,6 +219,14 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Spatie\\LaravelImageOptimizer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-image-optimizer/src',
+        ),
+        'Spatie\\ImageOptimizer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/image-optimizer/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -2376,7 +2394,7 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         'PHPUnit\\Util\\TestDox\\XmlResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/XmlResultPrinter.php',
         'PHPUnit\\Util\\TextTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TextTestListRenderer.php',
         'PHPUnit\\Util\\Type' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Type.php',
-        'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml.php',
+        'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XML.php',
         'PHPUnit\\Util\\XmlTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XmlTestListRenderer.php',
         'PHPUnit_Framework_MockObject_MockObject' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/MockObject.php',
         'PHP_Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
@@ -3524,6 +3542,22 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
         'Setup' => __DIR__ . '/../..' . '/database/migrations/2017_07_07_160455_Setup.php',
+        'Spatie\\ImageOptimizer\\DummyLogger' => __DIR__ . '/..' . '/spatie/image-optimizer/src/DummyLogger.php',
+        'Spatie\\ImageOptimizer\\Image' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Image.php',
+        'Spatie\\ImageOptimizer\\Optimizer' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizer.php',
+        'Spatie\\ImageOptimizer\\OptimizerChain' => __DIR__ . '/..' . '/spatie/image-optimizer/src/OptimizerChain.php',
+        'Spatie\\ImageOptimizer\\OptimizerChainFactory' => __DIR__ . '/..' . '/spatie/image-optimizer/src/OptimizerChainFactory.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\BaseOptimizer' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/BaseOptimizer.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Gifsicle' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Gifsicle.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Jpegoptim' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Jpegoptim.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Optipng' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Optipng.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Pngquant' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Pngquant.php',
+        'Spatie\\ImageOptimizer\\Optimizers\\Svgo' => __DIR__ . '/..' . '/spatie/image-optimizer/src/Optimizers/Svgo.php',
+        'Spatie\\LaravelImageOptimizer\\Exceptions\\InvalidConfiguration' => __DIR__ . '/..' . '/spatie/laravel-image-optimizer/src/Exceptions/InvalidConfiguration.php',
+        'Spatie\\LaravelImageOptimizer\\Facades\\ImageOptimizer' => __DIR__ . '/..' . '/spatie/laravel-image-optimizer/src/Facades/ImageOptimizer.php',
+        'Spatie\\LaravelImageOptimizer\\ImageOptimizerServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-image-optimizer/src/ImageOptimizerServiceProvider.php',
+        'Spatie\\LaravelImageOptimizer\\Middlewares\\OptimizeImages' => __DIR__ . '/..' . '/spatie/laravel-image-optimizer/src/Middlewares/OptimizeImages.php',
+        'Spatie\\LaravelImageOptimizer\\OptimizerChainFactory' => __DIR__ . '/..' . '/spatie/laravel-image-optimizer/src/OptimizerChainFactory.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',
@@ -4125,6 +4159,42 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\Controller' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/Controller.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\CropController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/CropController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\DeleteController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/DeleteController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\DemoController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/DemoController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\DownloadController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/DownloadController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\FolderController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/FolderController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\ItemsController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/ItemsController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\LfmController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/LfmController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\RedirectController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/RedirectController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\RenameController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/RenameController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\ResizeController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/ResizeController.php',
+        'UniSharp\\LaravelFilemanager\\Controllers\\UploadController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Controllers/UploadController.php',
+        'UniSharp\\LaravelFilemanager\\Events\\FileIsMoving' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/FileIsMoving.php',
+        'UniSharp\\LaravelFilemanager\\Events\\FileWasMoving' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/FileWasMoving.php',
+        'UniSharp\\LaravelFilemanager\\Events\\FolderIsMoving' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/FolderIsMoving.php',
+        'UniSharp\\LaravelFilemanager\\Events\\FolderIsRenaming' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/FolderIsRenaming.php',
+        'UniSharp\\LaravelFilemanager\\Events\\FolderWasMoving' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/FolderWasMoving.php',
+        'UniSharp\\LaravelFilemanager\\Events\\FolderWasRenamed' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/FolderWasRenamed.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageIsCropping' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageIsCropping.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageIsDeleting' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageIsDeleting.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageIsRenaming' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageIsRenaming.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageIsResizing' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageIsResizing.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageIsUploading' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageIsUploading.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageWasCropped' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageWasCropped.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageWasDeleted' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageWasDeleted.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageWasRenamed' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageWasRenamed.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageWasResized' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageWasResized.php',
+        'UniSharp\\LaravelFilemanager\\Events\\ImageWasUploaded' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Events/ImageWasUploaded.php',
+        'UniSharp\\LaravelFilemanager\\Handlers\\ConfigHandler' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Handlers/ConfigHandler.php',
+        'UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/LaravelFilemanagerServiceProvider.php',
+        'UniSharp\\LaravelFilemanager\\Lfm' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Lfm.php',
+        'UniSharp\\LaravelFilemanager\\LfmItem' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/LfmItem.php',
+        'UniSharp\\LaravelFilemanager\\LfmPath' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/LfmPath.php',
+        'UniSharp\\LaravelFilemanager\\LfmStorageRepository' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/LfmStorageRepository.php',
+        'UniSharp\\LaravelFilemanager\\Middlewares\\CreateDefaultFolder' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Middlewares/CreateDefaultFolder.php',
+        'UniSharp\\LaravelFilemanager\\Middlewares\\MultiUser' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Middlewares/MultiUser.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',

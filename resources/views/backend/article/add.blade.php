@@ -18,9 +18,17 @@
         </div>
     @endif
 
-    <form action="" method="post">
+    <form enctype="multipart/form-data" action="" method="post">
+        <p>
 
-        <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+          <h3>Immagine Post</h3>
+
+          <label>Aggiorna Immagine Post</label>
+          <input type="file" name="postimage">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+          
+          <hr>
+       </p>
 
         <p>
             <label for="title">Titolo:</label>
@@ -29,7 +37,7 @@
 
         <p>
             <label for="description">Descrizione:</label>
-            <textarea class="form-control" name="body" id="body" cols="30" rows="10"></textarea>
+            <textarea class="form-control" id="my-editor" name="body" id="body" cols="30" rows="10"></textarea>
         </p>
 
         <p>
@@ -99,17 +107,9 @@
 
     </form>
 
-    <script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <script src="{{ asset('js/backend/mytinymce.js') }}"></script>
 
     <script>
-        tinymce.init({
-            selector:'textarea#body',
-            plugins: [],
-            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-        });
 
         $(document).ready(function() {
             $("#categories").select2();

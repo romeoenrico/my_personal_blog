@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 use JildertMiedema\LaravelTactician\DispatchesCommands;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Image;
+use Intervention\Image\ImageManagerStatic as Image;
+//use ImageOptimizer;
+
 
 class ArticleController extends Controller {
 
@@ -77,6 +79,7 @@ class ArticleController extends Controller {
 							->with('error_message', 'Problemi in fase di aggiunta. Riprovare.');
 			}
 
+		$this->update_postImage($request, $article);
     $tags = $article->tag($request->get('tags'));
 
 		$request->session()->flash('success_message', 'Article è stato aggiunto correttamente!');
@@ -156,6 +159,7 @@ class ArticleController extends Controller {
 				$postimage = $request->file('postimage');
 				$filename = time() .  '_' . $article->id . '_' . $article->title . '.' . $postimage->getClientOriginalExtension();
 				Image::make($postimage)->save(public_path('/uploads/images' . "/" . $filename));
+				//ImageOptimizer::optimize(public_path('/uploads/images' . "/" . $filename));
 				$article->post_image = $filename;
 				return $article;
 		}
