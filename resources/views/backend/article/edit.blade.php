@@ -110,6 +110,7 @@
     </form>
 
     <script src="{{ asset('js/backend/mytinymce.js') }}"></script>
+    
 
     <script>
 

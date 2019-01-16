@@ -163,8 +163,7 @@ return [
 		Illuminate\Validation\ValidationServiceProvider::class,
 		Illuminate\View\ViewServiceProvider::class,
 		JildertMiedema\LaravelTactician\TacticianServiceProvider::class,
-		Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
-		Intervention\Image\ImageServiceProvider::class,
+
 
 		/*
 			         * Package Service Providers...
@@ -180,8 +179,7 @@ return [
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 		\Conner\Tagging\Providers\TaggingServiceProvider::class,
-
-
+		Intervention\Image\ImageServiceProvider::class,
 
 	],
 
