@@ -15,16 +15,16 @@ class CategoryTableSeeder extends Seeder {
 
 		App\Category::create([
 
-			'name' => 'News',
-			'slug' => 'news',
+			'name' => 'Coding',
+			'slug' => 'coding',
 			'description' => $faker->paragraph(3),
 
 		]);
 
 		App\Category::create([
 
-			'name' => 'Reportage',
-			'slug' => 'reportage',
+			'name' => 'Personal',
+			'slug' => 'personal',
 			'description' => $faker->paragraph(3),
 
 		]);

@@ -16,7 +16,7 @@ class ArticleTableSeeder extends Seeder {
 	public function run() {
 		$faker = Faker\Factory::create('it_IT');
 
-		$articleCount = 50;
+		$articleCount = 3;
 		$categoriesIds = $this->getCategoriesIdsArray();
 
 		for ($c=0; $c < $articleCount; $c++) {
