@@ -33,7 +33,7 @@
               </ul>
             </div>
             <div class="col px-5 copyright">
-            	<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <br> | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+            	<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </p>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
 	        <div class="row no-gutters">
 	          <div class="col-md-12">
 	            <div class="colorlib-navbar-brand">
-	              <a class="colorlib-logo" href="{{ route('front.home')}} "><b>er</b>omeo<span>.codes</span></a>
+	              <a class="colorlib-logo" href="{{ route('front.home')}} "><b>er</b>omeo<span>.name</span></a>
 	            </div>
 	            <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 	          </div>
