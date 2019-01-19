@@ -20,7 +20,7 @@
               <div class="col-md-8 col-md-offset-2">
                 @if (!Auth::check())
                 <div class="page-header">
-                    <h1>Hei Guest <small>Sign In in our site</small></h1>
+                    <h1>Hei Guest <small>Sign In our site</small></h1>
                 </div>
                 @else
                   <div class="page-header">

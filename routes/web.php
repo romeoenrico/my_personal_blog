@@ -23,8 +23,8 @@ Route::post('dashboard/profile', 'Backend\SessionsController@update_avatar');
 
 //Auth::routes();
 
-//Route::get('register', 'Backend\RegistrationController@create');
-//Route::post('register', 'Backend\RegistrationController@store');
+Route::get('register', 'Backend\RegistrationController@create');
+Route::post('register', 'Backend\RegistrationController@store');
 Route::get('login', 'Backend\SessionsController@create')->name('home');
 Route::post('login', 'Backend\SessionsController@store');
 Route::post('logout', 'Backend\SessionsController@destroy');
