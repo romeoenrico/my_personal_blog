@@ -14,7 +14,7 @@ Route::get('/', 'FrontendController@getIndex')->name('front.home');
 Route::get('article/{slug}', 'FrontendController@getArticle')->name('front.article');
 Route::get('category/{slug}', 'FrontendController@getCategory')->name('front.category');
 Route::get('tag/{tag}', 'FrontendController@getIndexByTag')->name('front.tag');
-Route::get('trending', 'FrontendController@getTrendingArticles')->name('front.trending');
+//Route::get('trending', 'FrontendController@getTrendingArticles')->name('front.trending');
 
 Route::get('dashboard', 'Backend\SessionsController@getIndex');
 

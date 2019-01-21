@@ -51,7 +51,7 @@ class FrontendController extends Controller {
 
 	}
 
-	public function getTrendingArticles(ArticleRepository $articleRepository) {
+	public function getTrendingArticles() {
 
 			 $trending = Redis::zrevrange('trending_articles', 0, 2);
 			 $trending = \App\Article::hydrate(

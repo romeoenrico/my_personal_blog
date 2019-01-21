@@ -92,6 +92,6 @@
 
 
     <script src="{{ asset('js/jsresources.js') }}"></script>
-
+    @include('frontend.includes.analytics')
   </body>
 </html>
