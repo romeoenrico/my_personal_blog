@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 
+    @include('frontend.includes.analytics')
 
   </head>
   <body>
@@ -92,6 +93,6 @@
 
 
     <script src="{{ asset('js/jsresources.js') }}"></script>
-    @include('frontend.includes.analytics')
+
   </body>
 </html>
