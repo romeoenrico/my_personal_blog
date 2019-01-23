@@ -4,7 +4,7 @@
 
 @section('metadescription') {{ $article->meta_description }} @endsection
 
-@section('metakeys') {{ $article->meta_keys }} @endsection 
+@section('metakeywords') {{ $article->meta_keys }} @endsection
 
 @section('content')
 
