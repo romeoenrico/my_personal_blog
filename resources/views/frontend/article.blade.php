@@ -1,6 +1,10 @@
 @extends('frontend.master.layout')
 
-@section('title') Home Page @endsection
+@section('title') {{ $article->title }} @endsection
+
+@section('metadescription') {{ $article->meta_description }} @endsection
+
+@section('metakeys') {{ $article->meta_keys }} @endsection 
 
 @section('content')
 

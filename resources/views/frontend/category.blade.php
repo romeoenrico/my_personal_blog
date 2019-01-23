@@ -1,8 +1,10 @@
 @extends('frontend.master.layout')
 
-@section('title') Home Page @endsection
+@section('title') List of Posts @endsection
 
-@section('subheading') Developer, Photographer @endsection
+@section('metadescription') List of Posts by Category | Enrico Romeo | Web Developer @endsection
+
+@section('metakeywords') articles, posts, enrico romeo, web developer, laravel, php, Developer @endsection
 
 @section('content')
 
