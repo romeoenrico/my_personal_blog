@@ -1,6 +1,6 @@
 @extends('frontend.master.layout')
 
-@section('title') Home Page @endsection
+@section('title')Home Page @endsection
 
 @section('content')
 

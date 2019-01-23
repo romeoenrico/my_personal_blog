@@ -1,6 +1,6 @@
 @extends('frontend.master.layout')
 
-@section('title') List of Posts @endsection
+@section('title')List of Posts @endsection
 
 @section('metadescription') List of Posts by Category | Enrico Romeo | Web Developer @endsection
 
