@@ -57,3 +57,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
     // list all lfm routes here...
 });
+
+Route::get('sitemap', 'SitemapController@index');

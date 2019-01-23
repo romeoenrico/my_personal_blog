@@ -2,9 +2,9 @@
 
 @section('title')List of Posts @endsection
 
-@section('metadescription') List of Posts by Category | Enrico Romeo | Web Developer @endsection
+@section('metadescription')List of Posts by Category | Enrico Romeo | Web Developer @endsection
 
-@section('metakeywords') articles, blog, technology, coding, programming, posts, enrico romeo, web developer, laravel, php, Developer @endsection
+@section('metakeywords')articles, blog, technology, coding, programming, posts, enrico romeo, web developer, laravel, php, Developer @endsection
 
 @section('content')
 

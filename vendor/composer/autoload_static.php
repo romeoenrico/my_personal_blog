@@ -361,6 +361,13 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
+        'L' => 
+        array (
+            'Laravelium\\Sitemap' => 
+            array (
+                0 => __DIR__ . '/..' . '/laravelium/sitemap/src',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\Common\\Lexer\\' => 
@@ -1996,6 +2003,9 @@ class ComposerStaticInit845bcad05a6900c7e41cbd683ab6ec3c
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laravelium\\Sitemap\\Model' => __DIR__ . '/..' . '/laravelium/sitemap/src/Laravelium/Sitemap/Model.php',
+        'Laravelium\\Sitemap\\Sitemap' => __DIR__ . '/..' . '/laravelium/sitemap/src/Laravelium/Sitemap/Sitemap.php',
+        'Laravelium\\Sitemap\\SitemapServiceProvider' => __DIR__ . '/..' . '/laravelium/sitemap/src/Laravelium/Sitemap/SitemapServiceProvider.php',
         'League\\Flysystem\\AdapterInterface' => __DIR__ . '/..' . '/league/flysystem/src/AdapterInterface.php',
         'League\\Flysystem\\Adapter\\AbstractAdapter' => __DIR__ . '/..' . '/league/flysystem/src/Adapter/AbstractAdapter.php',
         'League\\Flysystem\\Adapter\\AbstractFtpAdapter' => __DIR__ . '/..' . '/league/flysystem/src/Adapter/AbstractFtpAdapter.php',
