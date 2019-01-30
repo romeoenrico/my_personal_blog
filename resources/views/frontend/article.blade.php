@@ -40,7 +40,7 @@
 	                </div>
 	                <div class="desc align-self-md-center">
 	                  <h3>About The Author</h3>
-	                  <p>Hello, my name is Enrico and I’m passionate about technology, Internet and photography. I’m currently working in a big company and in the free time i beginned to do something to help the open source community. I like to study new programming languages and frameworks, at this moment I'm focused on Laravel PHP and VUE Js. </p>
+	                  <p>Hello, my name is Enrico from Rome (Italy), I’m passionate about technology, Internet and photography. I’m currently working in a big company and in my free time I do something to help the open source community. I enjoy learning new programming languages and frameworks, recently I'm focused on Laravel PHP and VUE JS. </p>
 	                </div>
 	              </div>
 
