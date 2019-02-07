@@ -8,7 +8,7 @@
 
     <meta name="description" content="@yield('metadescription')">
     <meta name="keywords" content="@yield('metakeywords')">
-
+    <meta name="msvalidate.01" content="9DBCC4E6142D527DA461313E5296976F" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
