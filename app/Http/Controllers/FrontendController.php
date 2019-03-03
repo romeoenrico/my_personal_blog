@@ -75,4 +75,15 @@ class FrontendController extends Controller {
 		return view('frontend.category', compact('currentCategory', 'articles'));
 	}
 
+
+	public function getCrawler() {
+
+		$crawler = \Goutte::request('GET', 'https://www.nasdaq.com/it/symbol/ndaq/real-time');
+	  $nodeValues = $crawler->filter('.qwidget-dollar')->each(function ($node) {
+			  return $node->text();
+	  });
+
+	  return view('frontend.crawler', ['nodeValues' => $nodeValues]);
+	}
+
 }

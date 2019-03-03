@@ -59,3 +59,4 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('sitemap', 'SitemapController@index');
+Route::get('crawler', 'FrontendController@getCrawler')->name('front.crawler');
