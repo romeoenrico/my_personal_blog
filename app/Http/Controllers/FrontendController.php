@@ -78,8 +78,8 @@ class FrontendController extends Controller {
 
 	public function getCrawler() {
 
-		$crawler = \Goutte::request('GET', 'https://www.nasdaq.com/it/symbol/ndaq/real-time');
-	  $nodeValues = $crawler->filter('.qwidget-dollar')->each(function ($node) {
+		$crawler = \Goutte::request('GET', 'https://www.teleborsa.it/azioni/unicredit-ucg-it0005239360-SVQwMDA1MjM5MzYw/analisi?tab=2');
+	  $nodeValues = $crawler->filter('#ctl00_phContents_ctlHeader_lblPrice')->each(function ($node) {
 			  return $node->text();
 	  });
 
