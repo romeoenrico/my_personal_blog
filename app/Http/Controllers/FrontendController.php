@@ -12,6 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class FrontendController extends Controller {
 
+
 	public function getIndex(ArticleRepository $articleRepository)
 	{
 		// prelevo gli articoli (includendo i dati sulle rispettive categorie ed autore associati)
@@ -78,12 +79,16 @@ class FrontendController extends Controller {
 
 	public function getCrawler() {
 
-		$crawler = \Goutte::request('GET', 'https://www.teleborsa.it/azioni/unicredit-ucg-it0005239360-SVQwMDA1MjM5MzYw/analisi?tab=2');
-	  $nodeValues = $crawler->filter('#ctl00_phContents_ctlHeader_lblPrice')->each(function ($node) {
+	$crawler = \Goutte::request('GET', 'https://www.teleborsa.it/azioni-estero/carrefour-pca-fr0000120172-MTkuUENB');
+	$nodeValuesHeaderTop = $crawler->filter('#ctl00_phContents_ctlHeader_pnlHeaderTop')->children()->each(function ($node) {
 			  return $node->text();
-	  });
+	});
+	$nodeValuesHeaderBottom = $crawler->filter('#ctl00_phContents_ctlHeader_pnlHeaderBottom')->children()->each(function ($node) {
+				return $node->text();
+	});
 
-	  return view('frontend.crawler', ['nodeValues' => $nodeValues]);
+
+	  return view('frontend.crawler', ['nodeValuesHeaderTop' => $nodeValuesHeaderTop, 'nodeValuesHeaderBottom' => $nodeValuesHeaderBottom]);
 	}
 
 }
