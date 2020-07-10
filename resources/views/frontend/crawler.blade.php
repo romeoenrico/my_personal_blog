@@ -55,12 +55,12 @@
             height:100%;
         }
         .card .box h2 {
-            font-size:30px;
+            font-size:25px;
             color:#262626;
             margin:20px auto;
         }
         .card .box h2 span {
-            font-size:20px;
+            font-size:19px;
             background:#e91e63;
             color:#fff;
             display:inline-block;
@@ -68,7 +68,7 @@
             border-radius:15px;
         }
         .card .box p {
-            font-size:18px;
+            font-size:14px;
             color:#262626;
         }
         .card .box span {
@@ -101,14 +101,14 @@
             <img src="https://upload.wikimedia.org/wikipedia/en/1/12/Carrefour_logo_no_tag.svg">
         </div>
         @if(strpos($nodeValuesHeaderTop[0], "+") === 0)
-          <h2 id="myStock">Azioni Carrefour<br><span style="background:green">{{ $nodeValuesHeaderTop[0] . "  " . $nodeValuesHeaderTop[1] }}</span></h2>
+          <h2 id="myStock">Azioni Carrefour<br><br><span style="background:green">{{ $nodeValuesHeaderTop[0] . "  " . $nodeValuesHeaderTop[1] }}</span></h2>
         @elseif(strpos($nodeValuesHeaderTop[0], "INV") === 0)
-          <h2 id="myStock">Azioni Carrefour<br><span style="background:#cdcd00">{{ $nodeValuesHeaderTop[0] . "  " . $nodeValuesHeaderTop[1] }}</span></h2>
+          <h2 id="myStock">Azioni Carrefour<br><br><span style="background:#cdcd00">{{ $nodeValuesHeaderTop[0] . "  " . $nodeValuesHeaderTop[1] }}</span></h2>
         @else
-          <h2 id="myStock">Azioni Carrefour<br><span style="background:red">{{ $nodeValuesHeaderTop[0] . "  " . $nodeValuesHeaderTop[1] }}</span></h2>
+          <h2 id="myStock">Azioni Carrefour<br><br><span style="background:red">{{ $nodeValuesHeaderTop[0] . "  " . $nodeValuesHeaderTop[1] }}</span></h2>
         @endif
-        <p> dati da <a href="https://www.teleborsa.it/azioni-estero/carrefour-pca-fr0000120172-MTkuUENB">Teleborsa.it</a> via DOM Crawler, no web service.</p>
-        <p id="myStock"> {{$nodeValuesHeaderBottom[0]}}</p>
+        <br>
+        <p id="myStock"> da <a href="https://www.teleborsa.it/azioni-estero/carrefour-pca-fr0000120172-MTkuUENB">Teleborsa.it</a> {{$nodeValuesHeaderBottom[0]}} </p>
     </div>
     </div>
 
